@@ -1,0 +1,20 @@
+@import '../common/sizes';
+
+.home {
+  text-align: center;
+  max-width: var(--maxWidth);
+  margin: 0px auto;
+  padding: 200px var(--gutter) 60px;
+  @media (--small-viewport) {
+    padding: 90px 20px 50px;
+  }
+}
+
+.home a {
+  text-decoration: none;
+}
+
+.bottom-articles {
+  min-height: 100vh;
+  lost-center: var(--maxWidth) 0px flex;
+}

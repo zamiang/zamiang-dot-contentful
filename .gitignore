@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.tmp
+.idea
+public
+compiled
+.swp
+.vscode
+newrelic_agent.log
+.DS_Store

@@ -1,0 +1,139 @@
+@import '../common/sizes';
+
+.footer {
+  font-size: 16px;
+  font-family: var(--walsheim-regular);
+  line-height: 122%;
+  background: var(--color-gray);
+  width: 100%;
+  padding: var(--gutter) 20px;
+  @media (--small-viewport) {
+    padding: 20px;
+  }
+}
+
+.footer-grid {
+  lost-center: var(--maxWidth) 0px flex;
+  align-items: flex-start;
+}
+
+.mark {
+  background-image: url('../../images/qah.svg');
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  height: 64px;
+  width: 64px;
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.mark-text {
+  background-image: url('../../images/publication-footer.svg');
+  display: inline-block;
+  vertical-align: top;
+  margin: 12px 0px 0px 20px;
+  height: 37px;
+  width: 125px;
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.top {
+  height: 80px;
+}
+
+.container {
+  width: 100%;
+  border-top: 2px solid var(--color-black);
+  list-style: none;
+  padding: 0px;
+  padding-top: 20px;
+  margin: 0px;
+}
+
+.container a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-black);
+  border-bottom: 2px solid var(--color-gray);
+  transition: var(--border-color)0.3s;
+  margin-bottom: 10px;
+  &:hover {
+    border-color: var(--color-black);
+  }
+}
+
+.border {
+  width: 100%;
+}
+
+.left {
+  width: 100%;
+  @media (--large-viewport) {
+    lost-column: 3/13 3 30px flex;
+    min-width: 209px;
+  }
+}
+
+.center {
+  width: 100%;
+  margin: 20px 0 0;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-black);
+  @media (--large-viewport) {
+    margin: 0px;
+    border: 0px solid;
+    lost-column: 4/13 3 30px flex;
+    min-width: 164px;
+  }
+}
+
+.right {
+  width: 100%;
+  margin: 0px;
+  @media (--large-viewport) {
+    lost-column: 6/13 3 120px flex;
+  }
+}
+
+.icon {
+  display: inline-block;
+  margin: 20px 20px 0 0;
+  height: 21px;
+  width: 21px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.copy {
+  color: #666;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.share {
+  display: none;
+  @media (--small-viewport) {
+    display: block;
+  }
+}
+
+.facebook {
+  background-image: url('../../images/facebook.svg');
+}
+
+.instagram {
+  background-image: url('../../images/instagram.svg');
+}
+
+.twitter {
+  background-image: url('../../images/twitter.svg');
+}
+
+.medium {
+  background-image: url('../../images/medium.svg');
+}

@@ -1,0 +1,13 @@
+{
+  "verbose": false,
+  "watch": [
+    "app/server.jsx",
+    "app/routes.jsx",
+    "app/helmconfig.js",
+    "app/components/Meta.jsx",
+    "server",
+    "webpack.config.js",
+    "postcss.config.js"
+  ],
+  "exec": "yarn run build:dev && node compiled/server.dev.js"
+}

@@ -1,0 +1,22 @@
+@custom-media --small-viewport (max-width: 900px);
+@custom-media --large-viewport (min-width: 900px);
+:root {
+  --site-border-size: 10px;
+  --gutter: 95px;
+  --mobile: 500;
+  --tablet: 700;
+  --maxWidth: 1600px;
+  --text-underline-opacity: 0.5;
+  --text-underline-color: currentColor;
+  --text-underline-position: -0.18em;
+  --text-underline-size: 0.04em;
+  --text-underline-gap: 0.1em;
+  --text-underline-gap-minimum: 1.5px;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-yellow: #FFF5AD;
+  --color-gray: #F6F6F6;
+  --color-med-gray: #656565;
+  --color-dark-gray: #333333;
+  --border-color: #B2B2B2;
+}
