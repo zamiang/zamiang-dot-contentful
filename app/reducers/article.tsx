@@ -8,10 +8,16 @@ import {
 } from '../types';
 import { ThunkResponse } from '../actions/action';
 import { Article } from '../actions/action';
+import { formatIncludes, formatArticle } from '../helpers/contentful';
+
+function formatArticles(articles: any, includes: any) {
+  const formattedIncludes = formatIncludes(includes);
+  return articles.map(a => formatArticle(a, formattedIncludes.entryHash, formattedIncludes.assetHash));
+}
 
 interface State {
   isLoading: boolean;
-  articles: Array<Article>;
+  articles: Article[];
   article: Article;
 }
 
@@ -33,7 +39,7 @@ export default function article(state = initialState, action: ThunkResponse) {
     case GET_ARTICLES_SUCCESS:
       return Object.assign({}, state, {
         articlesFetching: false,
-        articles: action.res.data
+        articles: formatArticles(action.res.data.items, action.res.data.includes),
       });
     case GET_ARTICLES_FAILURE:
       return Object.assign({}, state, {
@@ -47,7 +53,7 @@ export default function article(state = initialState, action: ThunkResponse) {
       });
     case GET_ARTICLE_SUCCESS:
       return Object.assign({}, state, {
-        article: action.res.data,
+        article: formatArticles(action.res.data.items, action.res.data.includes)[0],
         isLoading: false,
       });
     case GET_ARTICLE_FAILURE:

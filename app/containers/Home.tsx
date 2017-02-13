@@ -52,16 +52,13 @@ class Home extends React.Component<HomeProps, any> {
 
   render() {
     const { articles, totalArticles, currentPage } = this.props;
-    const canonicalUrl = currentPage > 1 ? `${ROOT_URL}/articles/${currentPage}` : ROOT_URL;
-    const items = [];
-
-    const fullTitle = 'Brennan Moore';
+    const fullTitle = "Brennan Moore | I'm a product engineer based in NYC.";
     return (
       <div className={cx('home')}>
         <Helmet
           title={fullTitle}
           link={[
-            { rel: 'canonical', href: canonicalUrl },
+            { rel: 'canonical', href: ROOT_URL },
           ]}
           meta={[
             { property: 'og:title', content: fullTitle }
