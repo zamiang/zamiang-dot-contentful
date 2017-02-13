@@ -19,4 +19,12 @@
   --color-med-gray: #656565;
   --color-dark-gray: #333333;
   --border-color: #B2B2B2;
+  --blue: steelblue;
+  --border-color: #BED0D0;
+  --gray: lightgrey;
+  --dark-gray: #333;
+  --light-gray: #aaa;
+  --default-font-color: rgba(0, 0, 0, 0.8);
+  --highlight: #E7FF00;
+  --home-padding: 35px;
 }

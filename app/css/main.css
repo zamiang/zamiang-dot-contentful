@@ -18,7 +18,7 @@
   --text-underline-gap-minimum: 1.5px;
 }
 
-.app {
+html {
   margin: 0;
   font-style: normal;
   -webkit-text-size-adjust: 100%;
@@ -27,20 +27,121 @@
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   width: 100%;
+  background: url('../images/fade.png');
+  background-repeat: repeat-x;
+  background-position: 0px -100px;
+}
+
+html body {
+  padding: 0px;
+  margin: 0px;
+  width: 95%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0rem;
+  font-size: 20px;
+  line-height: 1.6em;
+  background: inherit;
+  color: var(--default-font-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-family: adobe-garamond-pro, Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  line-height: 1.6em;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.time {
+  color: var(--default-font-color);
+}
+
+a {
+  color: var(--default-font-color);
+  border-bottom: 2px solid var(--border-color);
+  transition: border-color 0.3s;
+  text-decoration: none;
+}
+
+a:hover {
+  border-color: var(--highlight);
+  text-decoration: none;
+}
+
+h1, h2, h1 a, h2 a, h1 {
+  color: #222;
+}
+
+h3, h4, h5, h6 {
+  color: #494949;
+}
+
+html.wf-active {
+  letter-spacing: 0.01rem !important
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 20px;
+}
+
+p, ul, ol, table, pre, dl {
+  margin: 0 0 20px;
+}
+
+pre {
+  margin-bottom: 30px;
+}
+
+p {
+  line-height: 1.6em;
+  word-wrap: break-word;
+}
+
+p.nomargin {
+  margin: 0 0 20px;
+}
+
+ol {
+  margin: 0 0 50px;
+}
+
+ol:last-child, p:last-child {
+  margin-bottom: 0px;
+}
+
+h1, h2 {
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 28px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+h2.caps {
+  margin: 0px auto 10px;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+}
+
+h3 {
+  margin-bottom: 3px;
 }
 
 .overflow-hidden {
   overflow-x: hidden;
   height: 100vh;
-}
-
-.body {
-  opacity: 1;
-  transition: opacity 0.6s;
-  overflow: hidden;
-}
-
-.body-loading {
-  opacity: 0;
-  transition: opacity 0.3s;
 }

@@ -1,15 +1,111 @@
 @import '../common/sizes';
-
 .home {
   text-align: center;
   max-width: var(--maxWidth);
   margin: 0px auto;
-  padding: 200px var(--gutter) 60px;
+  padding: 60px var(--gutter) 60px;
   @media (--small-viewport) {
-    padding: 90px 20px 50px;
+    padding: 50px 20px 50px;
   }
 }
 
 .home a {
   text-decoration: none;
+}
+
+.small-border {
+  border-bottom: 2px solid #000;
+  width: 32px;
+  margin: 0px auto;
+}
+
+.caps {
+  margin: 0px auto 10px;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+}
+
+.project {
+  position: relative;
+  padding: var(--home-padding) 0px;
+  margin: 0px auto;
+  width: 600px;
+  text-align: left;
+  border-bottom: 1px solid #000
+}
+
+.project:last-child {
+  border-bottom: 0px;
+}
+
+.project h2 {
+  width: 91px;
+}
+
+.project h2, .project h2 a {
+  color: #444;
+  display: inline-block;
+}
+
+.description {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: normal;
+  max-width: 444px;
+  margin-left: 32px;
+}
+
+.portrait {
+  border-radius: 50%;
+  border: 0px solid #FFF;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  margin: 0px auto;
+  mix-blend-mode: multiply;
+  margin-bottom: 15px;
+}
+
+.name {
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 28px;
+  line-height: 148%;
+}
+
+.subheading {
+  max-width: 450px;
+  margin: 0px auto;
+  margin-bottom: 21px;
+}
+
+.links {
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 16px;
+}
+
+.ellipsis {
+  font-size: 61px;
+  line-height: 126%;
+  margin-top: -21px;
+}
+
+.section {
+  margin-bottom: 100px;
+}
+
+.section:last-child {
+  margin-bottom: 0px;
 }

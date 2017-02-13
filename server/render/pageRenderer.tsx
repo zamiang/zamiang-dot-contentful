@@ -35,7 +35,7 @@ const buildPage = ({ componentHTML, initialState, head } : { componentHTML: any,
               <meta http-equiv="X-UA-Compatible" content="IE=edge" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
               ${head.meta.toString()}
-              ${head.link.toString()}
+              <link rel="author" href="https://plus.google.com/+BrennanMoore" />
               <link rel="stylesheet" href="${assetPath('/assets/styles/main.css')}"/>
               ${head.script.toString()}
             </head>
@@ -44,6 +44,8 @@ const buildPage = ({ componentHTML, initialState, head } : { componentHTML: any,
               <script>window.__INITIAL_STATE__ = ${stringifyState(initialState)};</script>
               <script type="text/javascript" charset="utf-8" src="${assetPath('/assets/app.js')}"></script>
               ${analytics}
+              <script src="https://use.typekit.net/odn0pxa.js"></script>
+              <script>try{Typekit.load({ async: true });}catch(e){}</script>
             </body>
           </html>`;
 };

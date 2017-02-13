@@ -5,7 +5,6 @@ import renderMiddleware from "./render/middleware";
 
 const app = express();
 
-/*
 if (process.env.NODE_ENV !== 'production') {
   // enable webpack hot module replacement
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -16,7 +15,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devBrowserConfig.output.publicPath }));
   app.use(webpackHotMiddleware(compiler));
 }
-*/
 
 expressConfig(app);
 

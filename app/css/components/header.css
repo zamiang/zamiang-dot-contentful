@@ -1,23 +1,28 @@
 @import '../common/sizes';
-
 .header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 11;
-  width: calc(100% - 20px);
-  border-top: 10px solid var(--color-yellow);
-  margin-left: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: var(--gutter);
-  padding-bottom: 0px;
-  background-color: white;
-  pointer-events: none;
-  @media (--small-viewport) {
-    padding: 10px 20px;
-  }
+  width: 100%;
+  border-bottom: 1px solid #000;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 35px;
+  overflow: hidden;
+}
+
+.link {
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+  margin: 0px;
+  font-size: 20px;
+  transition: border-color 0.2s ease-in-out;
+  border-color: transparent;
+  text-decoration: none;
+}
+
+.link:hover {
+  border-color: var(--highlight);
 }

@@ -8,16 +8,8 @@ const cx = classNames.bind(styles);
 const Header = () => {
   return (
     <div className={cx('header')}>
-      <div className={cx('left')}>
-        left
-      </div>
-      <div className={cx('center')}>
-        center
-      </div>
-      <div className={cx('right')}>
-        right
-      </div>
-    </div >
+      <Link className={cx('link')} to={"/"}>Brennan Moore</Link>
+    </div>
   );
 };
 

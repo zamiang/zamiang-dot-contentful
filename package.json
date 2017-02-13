@@ -94,6 +94,8 @@
     "url-loader": "^0.5.7",
     "warning": "^3.0.0",
     "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1",
     "webpack-s3-plugin": "^0.9.2"
   }
 }
