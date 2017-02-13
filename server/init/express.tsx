@@ -5,7 +5,7 @@ import * as methodOverride from 'method-override';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-export default (app: express.Application) => {
+export default (app: any) => {
   app.set('port', (process.env.PORT || 3000));
 
   // X-Powered-By header has no functional value.

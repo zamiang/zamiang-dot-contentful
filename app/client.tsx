@@ -1,25 +1,24 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import useScroll from 'react-router-scroll/lib/useScroll';
 import createRoutes from './routes';
 import configureStore from './store/configureStore';
 import preRenderMiddleware from './middlewares/preRenderMiddleware';
 
 // Grab the state from a global injected into server-generated HTML
-const initialState = window.__INITIAL_STATE__;
+const initialState = window['__INITIAL_STATE__'];
 
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
-const routes = createRoutes(store);
+const routes = createRoutes();
 
 // Callback function handling frontend route changes.
 function onUpdate() {
   // Prevent duplicate fetches when first loaded.
-  if (window.__INITIAL_STATE__ !== null) {
-    window.__INITIAL_STATE__ = null;
+  if (window['__INITIAL_STATE__'] !== null) {
+    window['__INITIAL_STATE__'] = null;
     return;
   }
 
@@ -33,8 +32,7 @@ render(
   <Provider store={store}>
     <Router
       history={history}
-      onUpdate={onUpdate}
-      render={applyRouterMiddleware(useScroll())}>
+      onUpdate={onUpdate}>
       {routes}
     </Router>
   </Provider>, document.getElementById('app'));

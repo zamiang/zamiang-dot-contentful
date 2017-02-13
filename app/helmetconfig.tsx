@@ -1,5 +1,9 @@
+interface Config {
+  link: Array<string>;
+  meta: Array<string>;
+}
 
-const config = {
+const config: Config = {
   link: [],
   meta: []
 };

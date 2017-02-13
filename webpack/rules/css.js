@@ -3,7 +3,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postcssImport = require('postcss-import');
 const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
-const lost = require('lost');
 const PATHS = require('../paths');
 
 module.exports = ({ production = false, browser = false } = {}) => {
@@ -42,7 +41,6 @@ module.exports = ({ production = false, browser = false } = {}) => {
         plugins: [
           postcssImport({ path: path.resolve(PATHS.app, './css') }),
           postcssCssnext({ browsers: ['> 1%', 'last 2 versions'] }),
-          lost,
           postcssReporter({ clearMessages: true }),
         ]
       }

@@ -3,7 +3,7 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import * as createLogger from 'redux-logger';
 import promiseMiddleware from '../middlewares/promiseMiddleware';
-import rootReducer from '../reducers';
+import rootReducer from '../reducers/index';
 import { isClient, isDebug } from '../../config/env';
 
 export default function configureStore(initialState: any, history: any) {
@@ -22,8 +22,6 @@ export default function configureStore(initialState: any, history: any) {
   }
 
   /*
-  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
-
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('reducers', () => {

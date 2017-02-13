@@ -13,8 +13,3 @@
 .home a {
   text-decoration: none;
 }
-
-.bottom-articles {
-  min-height: 100vh;
-  lost-center: var(--maxWidth) 0px flex;
-}

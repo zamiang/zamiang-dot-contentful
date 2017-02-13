@@ -1,5 +1,4 @@
 @import './common/sizes';
-@import './common/fonts';
 
 /*
  * Add any global styles here
@@ -19,7 +18,7 @@
   --text-underline-gap-minimum: 1.5px;
 }
 
-body {
+.app {
   margin: 0;
   font-style: normal;
   -webkit-text-size-adjust: 100%;
@@ -28,31 +27,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   width: 100%;
-}
-
-.app {
-  height: 100%;
-  font-size: 18px;
-  font-family: var(--meta-serif-light);
-  line-height: 149%;
-  border: 10px solid var(--color-yellow);
-  border-bottom: 0px;
-  i, em {
-    font-family: var(--meta-serif-light-italic);
-    font-weight: normal;
-    font-style: normal;
-    b, strong {
-      font-family: meta-serif-bold-italic;
-    }
-  }
-  b, strong {
-    font-family: meta-serif-bold;
-    font-weight: normal;
-    font-style: normal;
-    i, em {
-      font-family: var(--meta-serif-bold-italic);
-    }
-  }
 }
 
 .overflow-hidden {

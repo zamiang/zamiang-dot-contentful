@@ -47,5 +47,5 @@ class App extends React.Component<AppProps, any> {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(App);

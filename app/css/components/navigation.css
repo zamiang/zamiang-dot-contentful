@@ -18,17 +18,3 @@
     -webkit-overflow-scrolling: touch;
   }
 }
-
-.navigation-visible {
-  display: block;
-}
-
-.categories {
-  lost-center: var(--maxWidth) 0px flex;
-  padding: 60px var(--gutter) 0px;
-  width: 100%;
-  margin: 0px auto;
-  @media (--small-viewport) {
-    padding: 60px 20px 0px;
-  }
-}

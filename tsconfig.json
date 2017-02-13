@@ -1,20 +1,29 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "lib": [
-      "es2015",
+      "es6",
       "dom"
     ],
-    "jsx": "react"
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "outDir": "compiled"
   },
   "include": [
-    "./src/**/*"
+    "./app/**/*",
+    "./server/**/*"
   ],
   "exclude": [
+    "app",
     "node_modules"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": false,
+    "emitRequireType": false
+  }
 }

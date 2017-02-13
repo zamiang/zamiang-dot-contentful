@@ -1,7 +1,7 @@
-import * as express from 'express';
-import * as webpack from 'webpack';
-import expressConfig from './init/express';
-import renderMiddleware from './render/middleware';
+import * as express from "express";
+import * as webpack from "webpack";
+import expressConfig from "./init/express";
+import renderMiddleware from "./render/middleware";
 
 const app = express();
 

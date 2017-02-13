@@ -1,10 +1,11 @@
 const image = require('./image');
-const javascript = require('./javascript');
+const typescript = require('./typescript');
+//const javascript = require('./javascript');
 const css = require('./css');
 
 module.exports = ({ production = false, browser = false } = {}) => (
   [
-    javascript({ production, browser }),
+    typescript({ production, browser }),
     css({ production, browser }),
     image()
   ]
