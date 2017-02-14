@@ -3,8 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './containers/App';
 import Home from './containers/Home';
-import Posts from './containers/Posts';
 import Post from './containers/Post';
+import Posts from './containers/Posts';
 
 export default () => {
   return (

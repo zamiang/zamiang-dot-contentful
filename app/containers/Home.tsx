@@ -68,6 +68,7 @@ class Home extends React.Component<HomeProps, any> {
           meta={[
             { property: 'og:title', content: fullTitle }
           ]} />
+        <div className={cx('side-gradient')} />
         <div className={cx('section')}>
           <div className={cx('portrait')}>
             <img src="https://secure.gravatar.com/avatar/ed442a2cfbe84d5bf40e09c58ba80b5f?size=200" />

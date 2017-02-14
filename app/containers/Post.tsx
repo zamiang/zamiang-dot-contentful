@@ -16,7 +16,7 @@ interface PostProps extends React.Props<any> {
   post: Post;
   posts: Post[];
   isLoading: boolean;
-  params: any;
+  params?: any;
   fetchPost: any;
 }
 
@@ -25,7 +25,6 @@ function mapStateToProps(state: any) {
     post: state.posts.post,
     posts: state.posts.posts,
     isLoading: state.posts.isLoading,
-    params: state.params,
   };
 }
 
@@ -54,14 +53,15 @@ class PostContainer extends React.Component<PostProps, any> {
 
   render() {
     const { post, posts } = this.props;
+    const body = post.body ? marked(post.body) : '';
     return (
       <div>
         <PostMeta post={post} />
         <div className={cx('post')}>
           <div className={cx('time')}>{moment(post.date).format('Do MMMM YYYY')}</div>
-          <div className={cx('title')}><Link to={`/post/${post.slug}`}>{post.title}</Link></div>
+          <div className={cx('title')}>{post.title}</div>
           <div className={cx('small-border')} />
-          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(post.body) }} />
+          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: body }} />
           <div className={cx('bottom-gradient')}></div>
         </div>
         <RelatedPosts posts={posts} />

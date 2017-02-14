@@ -104,6 +104,7 @@
 
 .section {
   margin-bottom: 100px;
+  position: relative;
 }
 
 .section:last-child {
@@ -118,4 +119,16 @@
   max-width: 420px;
   margin: 20px auto 0px;
   text-align: left;
+}
+
+.side-gradient {
+  position: absolute;
+  top: 400px;
+  height: 300px;
+  width: 118%;
+  left: -9%;
+  background: #E7FF00;
+  z-index: 0;
+  transform: rotate(22deg) translateZ(0);
+  display: block;
 }
