@@ -44,7 +44,6 @@ export default function post(state = initialState, action: ThunkResponse) {
         posts: []
       });
     case GET_POSTS_SUCCESS:
-      console.log(action.res.data.total, '!!!');
       return Object.assign({}, state, {
         postsFetching: false,
         posts: formatPosts(action.res.data.items, action.res.data.includes),

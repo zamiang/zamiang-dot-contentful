@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as webpack from "webpack";
 import expressConfig from "./init/express";
+import routesConfig from './init/routes';
 import renderMiddleware from "./render/middleware";
 
 const app = express();
@@ -17,6 +18,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 expressConfig(app);
+
+routesConfig(app);
 
 app.get('*', renderMiddleware);
 
