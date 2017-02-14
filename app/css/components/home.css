@@ -30,7 +30,7 @@
   position: relative;
   padding: var(--home-padding) 0px;
   margin: 0px auto;
-  width: 600px;
+  max-width: 600px;
   text-align: left;
   border-bottom: 1px solid #000
 }
@@ -54,6 +54,9 @@
   font-weight: normal;
   max-width: 444px;
   margin-left: 32px;
+  @media (--small-viewport) {
+    margin-left: 0px;
+  }
 }
 
 .portrait {

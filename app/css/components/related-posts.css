@@ -1,3 +1,5 @@
+@import '../common/sizes';
+
 .related-posts {
   border-top: 1px solid #000;
   margin: 50px auto 70px;
@@ -21,6 +23,9 @@
   width: 100%;
   padding: 0px;
   margin-top: 29px;
+  @media (--small-viewport) {
+    column-count: 2;
+  }
 }
 
 .post {

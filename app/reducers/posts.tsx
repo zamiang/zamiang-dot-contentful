@@ -41,7 +41,7 @@ export default function post(state = initialState, action: ThunkResponse) {
     case GET_POSTS_REQUEST:
       return Object.assign({}, state, {
         postsFetching: true,
-        posts: []
+        posts: [],
       });
     case GET_POSTS_SUCCESS:
       return Object.assign({}, state, {
