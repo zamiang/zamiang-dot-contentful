@@ -21,7 +21,6 @@ interface State {
   posts: Post[];
   post: Post;
   totalPosts: number;
-  currentPage: number;
 }
 
 const initialState: State = {
@@ -34,22 +33,18 @@ const initialState: State = {
     date: '',
   },
   totalPosts: 10,
-  currentPage: 1,
   isLoading: false,
 };
 
 export default function post(state = initialState, action: ThunkResponse) {
   switch (action.type) {
-    case CHANGE_PAGE:
-      return Object.assign({}, state, {
-        currentPage: action.data.page,
-      });
     case GET_POSTS_REQUEST:
       return Object.assign({}, state, {
         postsFetching: true,
         posts: []
       });
     case GET_POSTS_SUCCESS:
+      console.log(action.res.data.total, '!!!');
       return Object.assign({}, state, {
         postsFetching: false,
         posts: formatPosts(action.res.data.items, action.res.data.includes),

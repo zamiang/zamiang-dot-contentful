@@ -20,15 +20,14 @@ interface Params {
 interface PostsProps {
   posts: Array<Post>;
   totalPosts: number;
-  currentPage: number;
+  params?: any;
   fetchPosts: any;
 };
 
 function mapStateToProps(state: any) {
   return {
     posts: state.posts.posts,
-    totalPosts: state.navigation.totalPosts,
-    currentPage: state.navigation.currentPage
+    totalPosts: state.posts.totalPosts,
   };
 }
 
@@ -37,7 +36,7 @@ const mapDispatchToProps = { fetchPosts };
 class Posts extends React.Component<PostsProps, any> {
 
   static defaultProps = {
-    currentPage: 0,
+    currentPage: 1,
   };
 
   static need = [
@@ -45,16 +44,16 @@ class Posts extends React.Component<PostsProps, any> {
   ];
 
   componentWillReceiveProps(nextProps: PostsProps) {
-    const { currentPage } = this.props;
+    const { params } = this.props;
 
     // new page
-    if (nextProps.currentPage !== currentPage) {
-      this.props.fetchPosts(nextProps);
+    if (nextProps.params.pageNumber !== params.pageNumber) {
+      this.props.fetchPosts(nextProps.params);
     }
   }
 
   render() {
-    const { posts, totalPosts, currentPage } = this.props;
+    const { posts, totalPosts, params } = this.props;
     const fullTitle = "Brennan Moore | Posts";
     const postsHtml = posts.map((post: Post) => {
       return (
@@ -81,7 +80,7 @@ class Posts extends React.Component<PostsProps, any> {
         <div className={cx('section')}>
           {postsHtml}
         </div>
-        <PageNavigation currentPage={currentPage} totalPosts={totalPosts} />
+        <PageNavigation currentPage={params.pageNumber} totalPosts={totalPosts} />
       </div>
     );
   }

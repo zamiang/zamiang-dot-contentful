@@ -1,45 +1,31 @@
 @import '../common/sizes';
-.page-navigation {
-  color: black;
-  margin: 20px 0px;
-  font-size: 18px;
-  line-height: 122%;
+.pagination {
+  width: 100%;
+  border-top: 1px solid #000;
+  padding-top: 30px;
+  padding-bottom: 24px;
+  margin-top: 70px;
   text-align: center;
+  position: relative;
 }
 
-.arrow {
-  display: block;
-  width: 113px;
-  height: 60px;
-  cursor: pointer;
-  margin: 0px auto;
-  background-repeat: no-repeat;
-  background-size: 29%;
-  font-size: 33px;
-  text-decoration: none;
-  color: black;
-  padding-top: 20px;
+.previous, .next {
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 16px;
+  position: absolute;
+  top: 30px;
 }
 
-.arrow-left {
-  text-align: right;
-  margin-right: 30px;
+.next {
+  right: 0px;
 }
 
-.arrow-right {
-  margin-left: 30px;
-  background-position: center right;
-  text-align: left;
-}
-
-.arrow-hidden {
-  display: none;
-}
-
-.arrow-container {
-  display: inline-block;
-  vertical-align: top;
-  min-width: 113px;
+.previous {
+  left: 0px;
 }
 
 .page {
@@ -64,4 +50,8 @@
 
 .page-active {
   border: 5px solid black;
+}
+
+.hidden {
+  display: none;
 }

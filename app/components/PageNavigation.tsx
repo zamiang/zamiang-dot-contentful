@@ -16,23 +16,21 @@ class PageNavigation extends React.Component<PageProps, any> {
   render() {
     const { currentPage, totalPosts } = this.props;
     const maxPages = Math.ceil(totalPosts / PAGE_SIZE);
-    const prevPageLink = `/posts/${currentPage - 1}`;
-    const nextPageLink = `/posts/${currentPage + 1}`;
-    const leftArrowClass = ['arrow', 'arrow-left'];
-    const rightArrowClass = ['arrow', 'arrow-right'];
-    if (currentPage === 1) {
-      leftArrowClass.push('arrow-hidden');
-    } else if (currentPage === maxPages) {
-      rightArrowClass.push('arrow-hidden');
+    const prevPageLink = `/posts/${Number(currentPage) - 1}`;
+    const nextPageLink = `/posts/${Number(currentPage) + 1}`;
+    const leftArrowClass = ['previous'];
+    const rightArrowClass = ['next'];
+
+    if (Number(currentPage) === 1) {
+      leftArrowClass.push('hidden');
+    } else if (Number(currentPage) === maxPages) {
+      rightArrowClass.push('hidden');
     }
     return (
-      <div className={cx('page-navigation')}>
-        <div className={cx('arrow-container')}>
-          <Link to={prevPageLink} className={cx(leftArrowClass)}>Prev</Link>
-        </div>
-        <div className={cx('arrow-container')}>
-          <Link to={nextPageLink} className={cx(rightArrowClass)}>Next</Link>
-        </div>
+      <div className={cx('pagination')}>
+        <Link to={prevPageLink} className={cx(leftArrowClass)}>Previous</Link>
+        <span className={cx('page-number')}>{ currentPage } of { maxPages }</span>
+        <Link to={nextPageLink} className={cx(rightArrowClass)}>Next</Link>
       </div>
     );
   }
