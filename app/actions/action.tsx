@@ -18,7 +18,7 @@ export interface Action<T> {
   meta?: any;
 }
 
-export interface Article {
+export interface Post {
   id: string;
   title: string;
   slug: string;

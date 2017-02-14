@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { ROOT_URL } from '../types';
-import { fetchArticles } from '../actions/articles';
-import { Article } from '../actions/action';
+import { fetchPosts } from '../actions/posts';
+import { Post } from '../actions/action';
 
 const classNames = require('classnames/bind');
 const styles = require('../css/components/home.css');
@@ -15,19 +15,19 @@ interface Params {
 }
 
 interface HomeProps {
-  articles: Array<Article>;
-  totalArticles: number;
+  posts: Array<Post>;
+  totalPosts: number;
   currentPage: number;
-  fetchArticles: any;
+  fetchPosts: any;
 };
 
 function mapStateToProps(state: any) {
   return {
-    articles: state.article.articles,
+    posts: state.posts.posts,
   };
 }
 
-const mapDispatchToProps = { fetchArticles };
+const mapDispatchToProps = { fetchPosts };
 
 class Home extends React.Component<HomeProps, any> {
 
@@ -36,7 +36,7 @@ class Home extends React.Component<HomeProps, any> {
   };
 
   static need = [
-    fetchArticles,
+    fetchPosts,
   ];
 
   componentWillReceiveProps(nextProps: HomeProps) {
@@ -44,17 +44,17 @@ class Home extends React.Component<HomeProps, any> {
 
     // new page
     if (nextProps.currentPage !== currentPage) {
-      this.props.fetchArticles(nextProps);
+      this.props.fetchPosts(nextProps);
     }
   }
 
   render() {
-    const { articles } = this.props;
+    const { posts } = this.props;
     const fullTitle = "Brennan Moore | I'm a product engineer based in NYC.";
-    const articlesHtml = articles.map((article: Article) => {
+    const postsHtml = posts.map((post: Post) => {
       return (
-        <li key={article.id} className={cx('article')}>
-          <Link to={`/post/${article.slug}`}>{article.title}</Link>
+        <li key={post.id} className={cx('post')}>
+          <Link to={`/post/${post.slug}`}>{post.title}</Link>
         </li>
       );
     });
@@ -85,10 +85,10 @@ class Home extends React.Component<HomeProps, any> {
           </div>
         </div>
         <div className={cx('section')}>
-          <h2 className={cx('caps')}>Articles</h2>
+          <h2 className={cx('caps')}>Posts</h2>
           <div className={cx('small-border')}></div>
-          <ul className={cx('articles')}>
-            {articlesHtml}
+          <ul className={cx('posts')}>
+            {postsHtml}
           </ul>
         </div>
         <div className={cx('section')}>

@@ -1,62 +1,76 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchArticle } from '../actions/articles';
-import ArticleMeta from '../components/ArticleMeta';
-import { Article } from '../actions/action';
+import * as marked from 'marked';
+import * as moment from 'moment';
+import { Link } from 'react-router';
+import { fetchPost, fetchPosts } from '../actions/posts';
+import PostMeta from '../components/PostMeta';
+import RelatedPosts from '../components/RelatedPosts';
+import { Post } from '../actions/action';
 
 const classNames = require('classnames/bind');
-const styles = require('../css/components/article.css');
+const styles = require('../css/components/post.css');
 const cx = classNames.bind(styles);
 
-interface ArticleProps extends React.Props<any> {
-  article: Article;
+interface PostProps extends React.Props<any> {
+  post: Post;
+  posts: Post[];
   isLoading: boolean;
   params: any;
-  fetchArticle: any;
+  fetchPost: any;
 }
 
 function mapStateToProps(state: any) {
-  const article = state.article.article || {};
   return {
-    article,
-    isLoading: state.article.isLoading,
+    post: state.posts.post,
+    posts: state.posts.posts,
+    isLoading: state.posts.isLoading,
     params: state.params,
   };
 }
 
-const mapDispatchToProps = { fetchArticle };
+const mapDispatchToProps = { fetchPost };
 
-class ArticleContainer extends React.Component<ArticleProps, any> {
+class PostContainer extends React.Component<PostProps, any> {
 
   static need = [
-    fetchArticle,
+    fetchPost,
+    fetchPosts,
   ];
 
   static defaultProps = {
     isLoading: false,
   };
 
-  componentWillReceiveProps(nextProps: ArticleProps) {
+  componentWillReceiveProps(nextProps: PostProps) {
     const { params } = this.props;
 
-    // new article navigated to
+    // new post navigated to
     // TODO check this
-    if (nextProps.params.articleSlug && nextProps.params.articleSlug !== params.articleSlug) {
-      this.props.fetchArticle(nextProps.params);
+    if (nextProps.params.postSlug && nextProps.params.postSlug !== params.postSlug) {
+      this.props.fetchPost(nextProps.params);
     }
   }
 
   render() {
-    const { article } = this.props;
+    const { post, posts } = this.props;
     return (
-      <article className={cx('container')}>
-        {article.title}
-      </article>
+      <div>
+        <PostMeta post={post} />
+        <div className={cx('post')}>
+          <div className={cx('time')}>{moment(post.date).format('Do MMMM YYYY')}</div>
+          <div className={cx('title')}><Link to={`/post/${post.slug}`}>{post.title}</Link></div>
+          <div className={cx('small-border')} />
+          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(post.body) }} />
+          <div className={cx('bottom-gradient')}></div>
+        </div>
+        <RelatedPosts posts={posts} />
+      </div>
     );
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(ArticleContainer);
+  mapDispatchToProps,
+)(PostContainer);

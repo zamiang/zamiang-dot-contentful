@@ -5,70 +5,70 @@ import * as marked from 'marked';
 import * as moment from 'moment';
 import { Link } from 'react-router';
 import { ROOT_URL } from '../types';
-import { fetchArticles } from '../actions/articles';
-import { Article } from '../actions/action';
+import { fetchPosts } from '../actions/posts';
+import { Post } from '../actions/action';
 
 const classNames = require('classnames/bind');
-const styles = require('../css/components/articles.css');
+const styles = require('../css/components/posts.css');
 const cx = classNames.bind(styles);
 
 interface Params {
   pageNumber: number;
 }
 
-interface ArticlesProps {
-  articles: Array<Article>;
-  totalArticles: number;
+interface PostsProps {
+  posts: Array<Post>;
+  totalPosts: number;
   currentPage: number;
-  fetchArticles: any;
+  fetchPosts: any;
 };
 
 function mapStateToProps(state: any) {
   return {
-    articles: state.article.articles,
-    totalArticles: state.navigation.totalArticles,
+    posts: state.posts.posts,
+    totalPosts: state.navigation.totalPosts,
     currentPage: state.navigation.currentPage
   };
 }
 
-const mapDispatchToProps = { fetchArticles };
+const mapDispatchToProps = { fetchPosts };
 
-class Posts extends React.Component<ArticlesProps, any> {
+class Posts extends React.Component<PostsProps, any> {
 
   static defaultProps = {
     currentPage: 0,
   };
 
   static need = [
-    fetchArticles,
+    fetchPosts,
   ];
 
-  componentWillReceiveProps(nextProps: ArticlesProps) {
+  componentWillReceiveProps(nextProps: PostsProps) {
     const { currentPage } = this.props;
 
     // new page
     if (nextProps.currentPage !== currentPage) {
-      this.props.fetchArticles(nextProps);
+      this.props.fetchPosts(nextProps);
     }
   }
 
   render() {
-    const { articles, totalArticles, currentPage } = this.props;
+    const { posts, totalPosts, currentPage } = this.props;
     const fullTitle = "Brennan Moore | Posts";
-    const articlesHtml = articles.map((article: Article) => {
+    const postsHtml = posts.map((post: Post) => {
       return (
-        <div key={article.id} className={cx('article')}>
-          <div className={cx('time')}>{moment(article.date).format('Do MMMM YYYY')}</div>
-          <div className={cx('title')}><Link to={`/post/${article.slug}`}>{article.title}</Link></div>
+        <div key={post.id} className={cx('post')}>
+          <div className={cx('time')}>{moment(post.date).format('Do MMMM YYYY')}</div>
+          <div className={cx('title')}><Link to={`/post/${post.slug}`}>{post.title}</Link></div>
           <div className={cx('small-border')} />
-          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(article.body) }} />
+          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(post.body) }} />
           <div className={cx('bottom-gradient')}></div>
-          <Link className={cx('more-link')} to={`/post/${article.slug}`}>Read More</Link>
+          <Link className={cx('more-link')} to={`/post/${post.slug}`}>Read More</Link>
         </div>
       );
     });
     return (
-      <div className={cx('articles')}>
+      <div className={cx('posts')}>
         <Helmet
           title={fullTitle}
           link={[
@@ -78,7 +78,7 @@ class Posts extends React.Component<ArticlesProps, any> {
             { property: 'og:title', content: fullTitle }
           ]} />
         <div className={cx('section')}>
-          {articlesHtml}
+          {postsHtml}
         </div>
       </div>
     );
@@ -87,5 +87,5 @@ class Posts extends React.Component<ArticlesProps, any> {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Posts);

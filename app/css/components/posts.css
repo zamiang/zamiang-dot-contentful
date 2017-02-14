@@ -1,5 +1,5 @@
 @import '../common/sizes';
-.article {
+.post {
   margin: 0px auto;
   width: 594px;
   padding-top: 100px;
@@ -15,7 +15,6 @@
   font-size: 42px;
   margin-bottom: 11px;
   letter-spacing: 1px;
-  transition: all .3s;
   text-align: center;
 }
 

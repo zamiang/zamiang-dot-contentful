@@ -1,0 +1,70 @@
+.related-posts {
+  border-top: 1px solid #000;
+  margin: 50px auto 70px;
+  width: 100%;
+  padding: 70px 0px;
+  position: relative;
+  padding-bottom: 0px;
+}
+
+.content {
+  max-width: 1010px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.posts {
+  column-count: 2;
+  column-gap: 20px;
+  column-rule: 0px dotted #000;
+  column-fill: balance;
+  width: 100%;
+  padding: 0px;
+  margin-top: 29px;
+}
+
+.post {
+  border: 0px solid;
+  padding: 18px 0px 18px 18px;
+  width: 91%;
+  position: relative;
+}
+
+.post:before {
+  content: "●";
+  color: #000;
+  position: absolute;
+  left: 0px;
+  top: 18px;
+  font-size: 11px;
+  animation: color_change 1s infinite alternate;
+}
+
+.post a {
+  padding: 0px;
+  margin: 0px;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 1px;
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+.caps {
+  color: #222;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  line-height: 148%;
+  letter-spacing: 2px;
+  font-weight: normal;
+  margin: 0px auto 10px;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+}
+
+.small-border {
+  border-bottom: 2px solid #000;
+  width: 32px;
+  margin: 0px auto;
+}

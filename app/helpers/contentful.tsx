@@ -61,14 +61,14 @@ export function formatIncludes(includes) {
   return { assetHash, entryHash };
 }
 
-export function formatArticle(article, entryHash, assetHash) {
+export function formatPost(post, entryHash, assetHash) {
   return {
-    id: article.sys.id,
-    slug: article.fields.slug,
-    date: article.fields.date,
-    modifiedDate: article.sys.updatedAt,
-    title: article.fields.title,
-    subtitle: article.fields.subtitle,
-    body: article.fields.body
+    id: post.sys.id,
+    slug: post.fields.slug,
+    date: post.fields.date,
+    modifiedDate: post.sys.updatedAt,
+    title: post.fields.title,
+    subtitle: post.fields.subtitle,
+    body: post.fields.body
   };
 }

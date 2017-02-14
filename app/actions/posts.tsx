@@ -8,10 +8,10 @@ interface Options {
 };
 
 interface Params {
-  articleSlug: string;
+  postSlug: string;
 }
 
-export function fetchArticles(options: Options) {
+export function fetchPosts(options: Options) {
   const params = {
     order: '-fields.date',
     skip: ((options.pageNumber - 1) * types.PAGE_SIZE) || 0,
@@ -20,14 +20,14 @@ export function fetchArticles(options: Options) {
 
   const url = `${getEntriesUrl('post')}&${stringify(params)}`;
   return {
-    type: types.GET_ARTICLES,
+    type: types.GET_POSTS,
     promise: request.get(url),
   };
 }
 
-export function fetchArticle(params: Params) {
+export function fetchPost(params: Params) {
   return {
-    type: types.GET_ARTICLE,
-    promise: request.get(getEntryUrlBySlug(params.articleSlug, 'article'))
+    type: types.GET_POST,
+    promise: request.get(getEntryUrlBySlug(params.postSlug, 'post'))
   };
 }

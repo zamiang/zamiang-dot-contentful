@@ -11,7 +11,7 @@ export default () => {
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/posts" component={Posts} />
-      <Route path="/post/:articleSlug" component={Post} />
+      <Route path="/post/:postSlug" component={Post} />
     </Route>
   );
 };
