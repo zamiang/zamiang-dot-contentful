@@ -1,0 +1,67 @@
+@import '../common/sizes';
+.page-navigation {
+  color: black;
+  margin: 20px 0px;
+  font-size: 18px;
+  line-height: 122%;
+  text-align: center;
+}
+
+.arrow {
+  display: block;
+  width: 113px;
+  height: 60px;
+  cursor: pointer;
+  margin: 0px auto;
+  background-repeat: no-repeat;
+  background-size: 29%;
+  font-size: 33px;
+  text-decoration: none;
+  color: black;
+  padding-top: 20px;
+}
+
+.arrow-left {
+  text-align: right;
+  margin-right: 30px;
+}
+
+.arrow-right {
+  margin-left: 30px;
+  background-position: center right;
+  text-align: left;
+}
+
+.arrow-hidden {
+  display: none;
+}
+
+.arrow-container {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 113px;
+}
+
+.page {
+  font-size: 33px;
+  text-decoration: none;
+  padding-top: 14px;
+  margin: 0px 2px;
+  color: black;
+  flex: 1 1 60px;
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  text-align: center;
+  border: 5px solid white;
+  transition: var(--border-color) 0.3s;
+  display: inline-block;
+  vertical-align: top;
+  &:hover {
+    border: 5px solid black;
+  }
+}
+
+.page-active {
+  border: 5px solid black;
+}

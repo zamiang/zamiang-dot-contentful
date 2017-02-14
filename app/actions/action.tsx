@@ -9,6 +9,7 @@ export interface ThunkResponse {
   type: string;
   res: any;
   error?: string;
+  data?: any;
 }
 
 export interface Action<T> {

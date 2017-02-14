@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import { ROOT_URL } from '../types';
 import { fetchPosts } from '../actions/posts';
 import { Post } from '../actions/action';
+import PageNavigation from '../components/PageNavigation';
 
 const classNames = require('classnames/bind');
 const styles = require('../css/components/posts.css');
@@ -80,6 +81,7 @@ class Posts extends React.Component<PostsProps, any> {
         <div className={cx('section')}>
           {postsHtml}
         </div>
+        <PageNavigation currentPage={currentPage} totalPosts={totalPosts} />
       </div>
     );
   }

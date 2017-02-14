@@ -32,7 +32,7 @@ const mapDispatchToProps = { fetchPosts };
 class Home extends React.Component<HomeProps, any> {
 
   static defaultProps = {
-    currentPage: 0,
+    currentPage: 1,
   };
 
   static need = [

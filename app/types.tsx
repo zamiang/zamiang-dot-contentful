@@ -20,4 +20,4 @@ export const NAVIGATION_SHOW = 'NAVIGATION_SHOW';
 export const ROOT_URL = 'https://www.zamiang.com';
 
 export const CHANGE_PAGE = 'CHANGE_PAGE';
-export const PAGE_SIZE = 9;
+export const PAGE_SIZE = 10;

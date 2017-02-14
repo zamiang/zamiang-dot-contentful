@@ -31,3 +31,10 @@ export function fetchPost(params: Params) {
     promise: request.get(getEntryUrlBySlug(params.postSlug, 'post'))
   };
 }
+
+export function changePage(page: number) {
+  return {
+    type: types.CHANGE_PAGE,
+    data: { page },
+  };
+}

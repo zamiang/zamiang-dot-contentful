@@ -35,6 +35,16 @@
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.5.0.tgz#2f5c3aad4fbd00f89e99b83083e354bc5308e307"
 
+"@types/lodash.times@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@types/lodash.times/-/lodash.times-4.3.1.tgz#353c1e62642b7dba2d34b29f7c6071cfe8260b76"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.52"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.52.tgz#de5c7ab14da1289733233c9b0ec6f9e377db90f5"
+
 "@types/method-override@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/method-override/-/method-override-0.0.29.tgz#5f272145bcf70442cdd2b1a86e8e62635f1dfdcb"
@@ -3149,6 +3159,10 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.times@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.times/-/lodash.times-4.3.2.tgz#3e1f2565c431754d54ab57f2ed1741939285ca1d"
 
 lodash.uniq@^4.3.0:
   version "4.5.0"
