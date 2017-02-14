@@ -24,7 +24,11 @@ interface State {
 const initialState: State = {
   articles: [],
   article: {
-    title: ''
+    id: '',
+    title: '',
+    slug: '',
+    body: '',
+    date: '',
   },
   isLoading: false,
 };

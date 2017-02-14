@@ -19,7 +19,6 @@ export function fetchArticles(options: Options) {
   };
 
   const url = `${getEntriesUrl('post')}&${stringify(params)}`;
-  console.log(url);
   return {
     type: types.GET_ARTICLES,
     promise: request.get(url),

@@ -62,7 +62,6 @@ export function formatIncludes(includes) {
 }
 
 export function formatArticle(article, entryHash, assetHash) {
-  console.log(article);
   return {
     id: article.sys.id,
     slug: article.fields.slug,

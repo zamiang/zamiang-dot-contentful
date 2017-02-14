@@ -19,5 +19,9 @@ export interface Action<T> {
 }
 
 export interface Article {
+  id: string;
   title: string;
+  slug: string;
+  body: string;
+  date: string;
 }

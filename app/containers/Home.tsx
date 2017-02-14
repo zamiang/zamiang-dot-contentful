@@ -24,8 +24,6 @@ interface HomeProps {
 function mapStateToProps(state: any) {
   return {
     articles: state.article.articles,
-    totalArticles: state.navigation.totalArticles,
-    currentPage: state.navigation.currentPage
   };
 }
 
@@ -51,8 +49,15 @@ class Home extends React.Component<HomeProps, any> {
   }
 
   render() {
-    const { articles, totalArticles, currentPage } = this.props;
+    const { articles } = this.props;
     const fullTitle = "Brennan Moore | I'm a product engineer based in NYC.";
+    const articlesHtml = articles.map((article: Article) => {
+      return (
+        <li key={article.id} className={cx('article')}>
+          <Link to={`/post/${article.slug}`}>{article.title}</Link>
+        </li>
+      );
+    });
     return (
       <div className={cx('home')}>
         <Helmet
@@ -70,7 +75,6 @@ class Home extends React.Component<HomeProps, any> {
           <div className={cx('info')}>
             <p className={cx('name')}>Brennan Moore</p>
             <p className={cx('subheading')}>I'm a product engineer based in NYC. I'm passionate about building innovative digital products people love.</p>
-            <p className={cx('consulting')}>Currently, I split my time between personal & client projects.</p>
             <p className={cx('ellipsis')}>&hellip;</p>
             <p className={cx('links')}>
               <Link to={"/posts"}>blog</Link>&nbsp;&sdot;
@@ -79,6 +83,13 @@ class Home extends React.Component<HomeProps, any> {
             </p>
             <p className={cx('ellipsis')}>&hellip;</p>
           </div>
+        </div>
+        <div className={cx('section')}>
+          <h2 className={cx('caps')}>Articles</h2>
+          <div className={cx('small-border')}></div>
+          <ul className={cx('articles')}>
+            {articlesHtml}
+          </ul>
         </div>
         <div className={cx('section')}>
           <h2 className={cx('caps')}>Projects</h2>

@@ -20,7 +20,7 @@ function mapStateToProps(state: any) {
   return {
     article,
     isLoading: state.article.isLoading,
-    params: state.params
+    params: state.params,
   };
 }
 

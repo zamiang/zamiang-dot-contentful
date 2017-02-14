@@ -1,0 +1,56 @@
+@import '../common/sizes';
+.article {
+  margin: 0px auto;
+  width: 594px;
+  padding-top: 100px;
+  position: relative;
+}
+
+.title {
+  font-family: adobe-garamond-pro, Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  line-height: 1.6em;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 125%;
+  font-size: 42px;
+  margin-bottom: 11px;
+  letter-spacing: 1px;
+  transition: all .3s;
+  text-align: center;
+}
+
+.title a {
+  border-color: transparent;
+}
+
+.small-border {
+  border-bottom: 2px solid #000;
+  width: 32px;
+  margin: 15px auto 35px;
+}
+
+.time {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.body {
+  max-height: 457px;
+  overflow: hidden;
+  margin: 0px;
+  transition: all .3s ease;
+  position: relative;
+}
+
+.bottom-gradient {
+  display: block;
+  position: relative;
+  border-top: 2px solid #000;
+}
+
+.more-link {
+  padding-top: 30px;
+  display: inline-block;
+}

@@ -109,3 +109,13 @@
 .section:last-child {
   margin-bottom: 0px;
 }
+
+.article {
+  margin: 10px auto;
+}
+
+.articles {
+  max-width: 420px;
+  margin: 20px auto 0px;
+  text-align: left;
+}

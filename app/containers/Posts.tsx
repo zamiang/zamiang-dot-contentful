@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as Helmet from 'react-helmet';
+import * as marked from 'marked';
+import * as moment from 'moment';
 import { Link } from 'react-router';
 import { ROOT_URL } from '../types';
 import { fetchArticles } from '../actions/articles';
@@ -31,7 +33,7 @@ function mapStateToProps(state: any) {
 
 const mapDispatchToProps = { fetchArticles };
 
-class Articles extends React.Component<ArticlesProps, any> {
+class Posts extends React.Component<ArticlesProps, any> {
 
   static defaultProps = {
     currentPage: 0,
@@ -53,17 +55,30 @@ class Articles extends React.Component<ArticlesProps, any> {
   render() {
     const { articles, totalArticles, currentPage } = this.props;
     const fullTitle = "Brennan Moore | Posts";
+    const articlesHtml = articles.map((article: Article) => {
+      return (
+        <div key={article.id} className={cx('article')}>
+          <div className={cx('time')}>{moment(article.date).format('Do MMMM YYYY')}</div>
+          <div className={cx('title')}><Link to={`/post/${article.slug}`}>{article.title}</Link></div>
+          <div className={cx('small-border')} />
+          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(article.body) }} />
+          <div className={cx('bottom-gradient')}></div>
+          <Link className={cx('more-link')} to={`/post/${article.slug}`}>Read More</Link>
+        </div>
+      );
+    });
     return (
       <div className={cx('articles')}>
         <Helmet
           title={fullTitle}
           link={[
-            { rel: 'canonical', href: `${canonicalUrl}/posts` },
+            { rel: 'canonical', href: `${ROOT_URL}/posts` },
           ]}
           meta={[
-            { property: 'og:title', content: ROOT_URL }
+            { property: 'og:title', content: fullTitle }
           ]} />
         <div className={cx('section')}>
+          {articlesHtml}
         </div>
       </div>
     );
@@ -73,4 +88,4 @@ class Articles extends React.Component<ArticlesProps, any> {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Articles);
+)(Posts);
