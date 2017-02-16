@@ -2,6 +2,11 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import * as methodOverride from 'method-override';
+import { printSchema } from 'graphql/utilities/schemaPrinter';
+import { apolloExpress, graphiqlExpress } from 'graphql-server/dist/integrations/expressApollo';
+import schema from '../data/schema';
+
+// import { ExpressGraphQLOptionsFunction } from 'graphql-server-express';
 
 const ENV = process.env.NODE_ENV || 'development';
 
@@ -18,6 +23,10 @@ export default (app: any) => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+  app.get("/graphiql", graphiqlExpress({ endpointURL: '/graphql' }));
+  app.use('/graphql', bodyParser.json(), apolloExpress({ schema }));
+
   app.use(methodOverride());
   app.use(express.static(path.join(__dirname, '../..', 'public')));
 

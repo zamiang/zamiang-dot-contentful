@@ -1,7 +1,6 @@
 import { stringify } from 'querystring';
 import request from 'axios';
 import * as types from '../types';
-import { getEntriesUrl, getEntryUrlBySlug } from '../helpers/contentful';
 
 interface Options {
   pageNumber: number;
@@ -12,13 +11,12 @@ interface Params {
 }
 
 export function fetchPosts(options: Options) {
-  const params = {
-    order: '-fields.date',
-    skip: ((options.pageNumber - 1) * types.PAGE_SIZE) || 0,
-    limit: types.PAGE_SIZE,
-  };
-
-  const url = `${getEntriesUrl('post')}&${stringify(params)}`;
+  const query = `{
+    posts(page: ${options.pageNumber}) {
+      id, slug, date, updatedAt, title, subtitle, body
+    }
+  }`;
+  const url = `/graphql?query=${query}`;
   return {
     type: types.GET_POSTS,
     promise: request.get(url),
@@ -26,8 +24,16 @@ export function fetchPosts(options: Options) {
 }
 
 export function fetchPost(params: Params) {
+  const query = `
+    {
+      post(slug: ${params.postSlug}) {
+        id, slug, date, updatedAt, title, subtitle, body
+      }
+    }
+  `;
+  const url = `/graphql?query=${query}`;
   return {
     type: types.GET_POST,
-    promise: request.get(getEntryUrlBySlug(params.postSlug, 'post'))
+    promise: request.get(query)
   };
 }
