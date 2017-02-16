@@ -11,29 +11,26 @@ interface Params {
 }
 
 export function fetchPosts(options: Options) {
-  const query = `{
-    posts(page: ${options.pageNumber}) {
-      id, slug, date, updatedAt, title, subtitle, body
-    }
-  }`;
-  const url = `/graphql?query=${query}`;
+  const pageNumber = options.pageNumber || 1;
+  const query = { query: `{ posts(page: ${pageNumber}) { id } }`};
+  const url = `/graphql?${stringify(query)}`;
   return {
     type: types.GET_POSTS,
-    promise: request.get(url),
+    promise: request.post(url),
   };
 }
 
 export function fetchPost(params: Params) {
-  const query = `
+  const query = { query: `{
     {
       post(slug: ${params.postSlug}) {
         id, slug, date, updatedAt, title, subtitle, body
       }
     }
-  `;
-  const url = `/graphql?query=${query}`;
+  `};
+  const url = `/graphql?${stringify(query)}`;
   return {
     type: types.GET_POST,
-    promise: request.get(query)
+    promise: request.post(url)
   };
 }

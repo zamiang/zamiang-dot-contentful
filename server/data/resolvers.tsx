@@ -77,6 +77,6 @@ export const fetchPosts = (options: PostsOptions) => {
   return request.get(url).then(formatPosts);
 };
 
-export const fetchPost = (id: string) => {
-  return request.get(getEntryUrlBySlug(id, 'post')).then((res: ContentfulResponse) => formatPosts(res)[0]);
+export const fetchPost = (slug: string) => {
+  return request.get(getEntryUrlBySlug(slug, 'post')).then((res: ContentfulResponse) => formatPosts(res)[0]);
 };

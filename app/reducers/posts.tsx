@@ -9,12 +9,6 @@ import {
 } from '../types';
 import { ThunkResponse } from '../actions/action';
 import { Post } from '../actions/action';
-import { formatIncludes, formatPost } from '../helpers/contentful';
-
-function formatPosts(posts: any, includes: any) {
-  const formattedIncludes = formatIncludes(includes);
-  return posts.map(a => formatPost(a, formattedIncludes.entryHash, formattedIncludes.assetHash));
-}
 
 interface State {
   isLoading: boolean;
@@ -46,7 +40,7 @@ export default function post(state = initialState, action: ThunkResponse) {
     case GET_POSTS_SUCCESS:
       return Object.assign({}, state, {
         postsFetching: false,
-        posts: formatPosts(action.res.data.items, action.res.data.includes),
+        posts: action.res.data.posts,
         totalPosts: action.res.data.total,
       });
     case GET_POSTS_FAILURE:
@@ -60,7 +54,7 @@ export default function post(state = initialState, action: ThunkResponse) {
       });
     case GET_POST_SUCCESS:
       return Object.assign({}, state, {
-        post: formatPosts(action.res.data.items, action.res.data.includes)[0],
+        post: action.res.data.post,
         isLoading: false,
       });
     case GET_POST_FAILURE:

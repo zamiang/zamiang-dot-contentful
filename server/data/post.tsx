@@ -48,10 +48,10 @@ const Post = {
   type: PostType,
   description: 'A Post',
   args: {
-    id: {
+    slug: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'The ID of the Article',
-    },
+      description: 'The slug of the Post',
+    }
   },
   resolve: (root, { id }) => fetchPost(id),
 };
