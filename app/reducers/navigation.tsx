@@ -1,27 +1,26 @@
 import {
   NAVIGATION_HIDE,
   NAVIGATION_SHOW,
-} from '../types';
-import { Action } from '../actions/action';
-import { NAVIGATION_ACTION } from '../actions/navigation';
+} from "../types";
+import { IAction, INavigationAction } from "../interfaces";
 
-interface State {
+interface IState {
   visible: boolean;
 }
 
-const initialState: State = {
+const initialState: IState = {
   visible: false,
 };
 
-export default function navigation(state = initialState, action: Action<NAVIGATION_ACTION>) {
+export default function navigation(state = initialState, action: IAction<INavigationAction>) {
   switch (action.type) {
     case NAVIGATION_SHOW:
       return Object.assign({}, state, {
-        visible: true
+        visible: true,
       });
     case NAVIGATION_HIDE:
       return Object.assign({}, state, {
-        visible: false
+        visible: false,
       });
     default:
       return state;

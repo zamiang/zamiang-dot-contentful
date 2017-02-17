@@ -1,4 +1,4 @@
-@import '../common/sizes';
+@import "../common/sizes";
 
 .navigation {
   width: calc(100% - 20px);

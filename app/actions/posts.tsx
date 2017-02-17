@@ -1,33 +1,48 @@
-import { stringify } from 'querystring';
-import request from 'axios';
-import * as types from '../types';
-import { getEntriesUrl, getEntryUrlBySlug } from '../helpers/contentful';
+import request from "axios";
+import * as types from "../types";
 
-interface Options {
+interface IOptions {
   pageNumber: number;
 };
 
-interface Params {
+interface IParams {
   postSlug: string;
 }
 
-export function fetchPosts(options: Options) {
-  const params = {
-    order: '-fields.date',
-    skip: ((options.pageNumber - 1) * types.PAGE_SIZE) || 0,
-    limit: types.PAGE_SIZE,
-  };
-
-  const url = `${getEntriesUrl('post')}&${stringify(params)}`;
+export function fetchPosts(options: IOptions) {
+  const pageNumber = options.pageNumber || 1;
+  const query = `{
+  posts(page: ${pageNumber}) {
+    pageInfo {
+      total
+    }
+    edges {
+      node {
+        id
+        slug
+        date
+        updatedAt
+        title
+        body
+      }
+    }
+  } }`;
+  const url = "/graphql";
   return {
     type: types.GET_POSTS,
-    promise: request.get(url),
+    promise: request.post(url, {
+      query,
+    }),
   };
 }
 
-export function fetchPost(params: Params) {
+export function fetchPost(params: IParams) {
+  const query = `{ post(slug: "${params.postSlug}") { id, slug, date, updatedAt, title, body } }`;
+  const url = "/graphql";
   return {
     type: types.GET_POST,
-    promise: request.get(getEntryUrlBySlug(params.postSlug, 'post'))
+    promise: request.post(url, {
+      query,
+    }),
   };
 }

@@ -6,6 +6,6 @@ export default function preRenderMiddleware(store: any, components: any, params:
       return (current.need || []).concat(previous);
     }, []).map((need: any) => {
       return dispatch(need(params, state));
-    })
+    }),
   );
 }

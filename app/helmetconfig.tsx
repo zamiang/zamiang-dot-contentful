@@ -1,11 +1,11 @@
-interface Config {
-  link: Array<string>;
-  meta: Array<string>;
+interface IConfig {
+  link: string[];
+  meta: string[];
 }
 
-const config: Config = {
+const config: IConfig = {
   link: [],
-  meta: []
+  meta: [],
 };
 
 export default config;
