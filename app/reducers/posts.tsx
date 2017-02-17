@@ -29,6 +29,10 @@ const initialState: IState = {
   isLoading: false,
 };
 
+const formatPosts = (posts: any) => {
+  return posts.map((post) => post.node);
+}
+
 export default function post(state = initialState, action: IThunkResponse) {
   switch (action.type) {
     case GET_POSTS_REQUEST:
@@ -39,8 +43,8 @@ export default function post(state = initialState, action: IThunkResponse) {
     case GET_POSTS_SUCCESS:
       return Object.assign({}, state, {
         postsFetching: false,
-        posts: action.res.data.data.posts,
-        totalPosts: action.res.data.total,
+        posts: formatPosts(action.res.data.data.posts.edges),
+        totalPosts: action.res.data.data.posts.pageInfo.total,
       });
     case GET_POSTS_FAILURE:
       return Object.assign({}, state, {

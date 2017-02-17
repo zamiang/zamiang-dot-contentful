@@ -11,8 +11,23 @@ interface IParams {
 
 export function fetchPosts(options: IOptions) {
   const pageNumber = options.pageNumber || 1;
-  const query = `{ posts(page: ${pageNumber}) { id, slug, date, updatedAt, title, body } }`;
-  const url = "/graphql?";
+  const query = `{
+  posts(page: ${pageNumber}) {
+    pageInfo {
+      total
+    }
+    edges {
+      node {
+        id
+        slug
+        date
+        updatedAt
+        title
+        body
+      }
+    }
+  } }`;
+  const url = "/graphql";
   return {
     type: types.GET_POSTS,
     promise: request.post(url, {

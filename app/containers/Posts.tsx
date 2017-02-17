@@ -55,6 +55,7 @@ class Posts extends React.Component<IPostsProps, any> {
   public render() {
     const { posts, totalPosts, params } = this.props;
     const fullTitle = "Brennan Moore | Posts";
+    const pageNumber = params.pageNumber || 1;
     const postsHtml = posts.map((post: IPost) => {
       return (
         <div key={post.id} className={cx("post")}>
@@ -80,7 +81,7 @@ class Posts extends React.Component<IPostsProps, any> {
         <div className={cx("section")}>
           {postsHtml}
         </div>
-        <PageNavigation currentPage={params.pageNumber} totalPosts={totalPosts} />
+        <PageNavigation currentPage={pageNumber} totalPosts={totalPosts} />
       </div>
     );
   }

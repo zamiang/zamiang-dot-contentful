@@ -10,6 +10,7 @@ interface IContentfulPost {
   sys: {
     id: string;
     updatedAt: string;
+    createdAt: string;
   };
   fields: {
     slug: string;
@@ -22,6 +23,7 @@ interface IContentfulPost {
 interface IContentfulResponse {
   data: {
     items: any[];
+    total: number;
   };
 }
 
@@ -33,15 +35,21 @@ const formatPost = (post: IContentfulPost) => {
   return {
     id: post.sys.id,
     slug: post.fields.slug,
-    date: post.fields.date,
+    date: post.sys.createdAt,
     modifiedDate: post.sys.updatedAt,
     title: post.fields.title,
     body: post.fields.body,
   };
 };
 
-const formatPosts = (res: IContentfulResponse) => {
-  return res.data.items.map(formatPost);
+const formatPostsContentfulResponse = (res: IContentfulResponse) => {
+  const posts = res.data.items.map(formatPost);
+  const total = res.data.total;
+  return { posts, total };
+};
+
+const formatPostContentfulResponse = (res: IContentfulResponse) => {
+  return res.data.items.map(formatPost)[0];
 };
 
 const getEntriesUrl = (type) => {
@@ -72,9 +80,11 @@ export const fetchPosts = (options: IPostsOptions) => {
   };
 
   const url = `${getEntriesUrl("post")}&${stringify(params)}`;
-  return request.get(url).then(formatPosts);
+  return request.get(url).then(formatPostsContentfulResponse);
 };
 
 export const fetchPost = (slug: string) => {
-  return request.get(getEntryUrlBySlug(slug, "post")).then((res: IContentfulResponse) => formatPosts(res)[0]);
+  return request
+    .get(getEntryUrlBySlug(slug, "post"))
+    .then((res: IContentfulResponse) => formatPostContentfulResponse(res));
 };
