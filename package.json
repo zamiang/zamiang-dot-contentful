@@ -5,7 +5,7 @@
   "repository": "https://github.com/zamiang/zamiang-dot-contentful",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint -c tslint.json server/index.tsx",
+    "lint": "tslint -c tslint.json server/**/* app/* app/actions/* app/components/* app/containers/* app/middlewares/* app/reducers/* app/store/*",
     "clean": "rimraf public && rimraf compiled",
     "start": "cross-env NODE_ENV=production node compiled/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",

@@ -6,31 +6,30 @@ import {
   GET_POST_SUCCESS,
   GET_POST_FAILURE,
   GET_POST_REQUEST,
-} from '../types';
-import { ThunkResponse } from '../actions/action';
-import { Post } from '../actions/action';
+} from "../types";
+import { IThunkResponse, IPost } from "../interfaces";
 
-interface State {
+interface IState {
   isLoading: boolean;
-  posts: Post[];
-  post: Post;
+  posts: IPost[];
+  post: IPost;
   totalPosts: number;
 }
 
-const initialState: State = {
+const initialState: IState = {
   posts: [],
   post: {
-    id: '',
-    title: '',
-    slug: '',
-    body: '',
-    date: '',
+    id: "",
+    title: "",
+    slug: "",
+    body: "",
+    date: "",
   },
   totalPosts: 10,
   isLoading: false,
 };
 
-export default function post(state = initialState, action: ThunkResponse) {
+export default function post(state = initialState, action: IThunkResponse) {
   switch (action.type) {
     case GET_POSTS_REQUEST:
       return Object.assign({}, state, {

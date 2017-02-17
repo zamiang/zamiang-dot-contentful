@@ -1,28 +1,30 @@
-export interface ThunkAction {
+export interface IThunkAction {
   type: string;
   promise?: any;
   error?: boolean;
   meta?: any;
 }
 
-export interface ThunkResponse {
+export interface IThunkResponse {
   type: string;
   res: any;
   error?: string;
   data?: any;
 }
 
-export interface Action<T> {
+export interface IAction<T> {
   type: string;
   payload: T;
   error?: boolean;
   meta?: any;
 }
 
-export interface Post {
+export interface IPost {
   id: string;
   title: string;
   slug: string;
   body: string;
   date: string;
 }
+
+export interface INavigationAction { visible: boolean; };

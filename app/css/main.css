@@ -1,4 +1,4 @@
-@import './common/sizes';
+@import "./common/sizes";
 
 /*
  * Add any global styles here
@@ -27,7 +27,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   width: 100%;
-  background: url('../images/fade.png');
+  background: url("../images/fade.png");
   background-repeat: repeat-x;
   background-position: 0px -100px;
 }

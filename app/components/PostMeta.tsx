@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as Helmet from 'react-helmet';
-import { ROOT_URL } from '../types';
-import { Post } from '../actions/action';
+import * as React from "react";
+import * as Helmet from "react-helmet";
+import { ROOT_URL } from "../types";
+import { IPost } from "../interfaces";
 
-interface Props {
-  post: Post;
+interface IProps {
+  post: IPost;
 }
 
-const PostMeta = (props: Props) => {
+const PostMeta = (props: IProps) => {
   const { post } = props;
   const fullTitle = `${post.title} | Brennan Moore`;
   const fullUrl = `${ROOT_URL}/post/${post.slug}`;
@@ -15,7 +15,7 @@ const PostMeta = (props: Props) => {
     <Helmet
       title={fullTitle}
       link={[
-        { rel: 'canonical', href: fullUrl }
+        { rel: "canonical", href: fullUrl },
       ]} />);
 };
 

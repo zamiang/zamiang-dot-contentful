@@ -8,7 +8,9 @@ export default function promiseMiddleware() {
     return (action: any) => {
       const { promise, type, ...rest } = action;
 
-      if (!promise) return next(action);
+      if (!promise) {
+        return next(action);
+      }
 
       const SUCCESS = `${type}_SUCCESS`;
       const REQUEST = `${type}_REQUEST`;

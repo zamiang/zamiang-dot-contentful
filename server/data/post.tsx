@@ -1,27 +1,27 @@
-import { has } from 'lodash';
+import { has } from "lodash";
 import {
   GraphQLString,
   GraphQLObjectType,
   GraphQLNonNull,
   GraphQLInterfaceType,
   GraphQLID,
-} from 'graphql';
-import { fetchPost } from './resolvers';
+} from "graphql";
+import { fetchPost } from "./resolvers";
 
 const PostType = new GraphQLObjectType({
-  name: 'Post',
-  isTypeOf: (obj) => has(obj, 'title') && has(obj, 'slug'),
+  name: "Post",
+  isTypeOf: (obj) => has(obj, "title") && has(obj, "slug"),
   interfaces: [
     new GraphQLInterfaceType({
-      name: 'Node',
-      description: 'An object with a Globally Unique ID',
+      name: "Node",
+      description: "An object with a Globally Unique ID",
       fields: () => ({
         id: {
           type: new GraphQLNonNull(GraphQLID),
-          description: 'The ID of the object.',
+          description: "The ID of the object.",
         },
       }),
-    })
+    }),
   ],
   fields: () => ({
     id: {
@@ -41,17 +41,17 @@ const PostType = new GraphQLObjectType({
     },
     date: {
       type: GraphQLString,
-    }
+    },
   }),
 });
 
 const Post = {
   type: PostType,
-  description: 'A Post',
+  description: "A Post",
   args: {
     slug: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'The slug of the Post',
+      description: "The slug of the Post",
     },
   },
   resolve: (root, { slug }) => fetchPost(slug),

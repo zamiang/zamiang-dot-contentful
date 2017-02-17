@@ -1,19 +1,18 @@
-import { stringify } from 'querystring';
-import request from 'axios';
-import * as types from '../types';
+import request from "axios";
+import * as types from "../types";
 
-interface Options {
+interface IOptions {
   pageNumber: number;
 };
 
-interface Params {
+interface IParams {
   postSlug: string;
 }
 
-export function fetchPosts(options: Options) {
+export function fetchPosts(options: IOptions) {
   const pageNumber = options.pageNumber || 1;
   const query = `{ posts(page: ${pageNumber}) { id, slug, date, updatedAt, title, body } }`;
-  const url = '/graphql?';
+  const url = "/graphql?";
   return {
     type: types.GET_POSTS,
     promise: request.post(url, {
@@ -22,13 +21,13 @@ export function fetchPosts(options: Options) {
   };
 }
 
-export function fetchPost(params: Params) {
+export function fetchPost(params: IParams) {
   const query = `{ post(slug: "${params.postSlug}") { id, slug, date, updatedAt, title, body } }`;
-  const url = '/graphql';
+  const url = "/graphql";
   return {
     type: types.GET_POST,
     promise: request.post(url, {
       query,
-    })
+    }),
   };
 }

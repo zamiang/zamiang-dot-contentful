@@ -1,10 +1,10 @@
-import { GraphQLInt, GraphQLBoolean, GraphQLList, } from 'graphql';
-import Post from './post';
-import { fetchPosts } from './resolvers';
+import { GraphQLInt, GraphQLBoolean, GraphQLList } from "graphql";
+import Post from "./post";
+import { fetchPosts } from "./resolvers";
 
 const Posts = {
   type: new GraphQLList(Post.type),
-  description: 'A list of Posts',
+  description: "A list of Posts",
   args: {
     page: {
       type: GraphQLInt,

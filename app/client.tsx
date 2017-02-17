@@ -1,15 +1,16 @@
-import * as React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import createRoutes from './routes';
-import configureStore from './store/configureStore';
-import preRenderMiddleware from './middlewares/preRenderMiddleware';
-import * as useScroll from 'react-router-scroll/lib/useScroll';
+import * as React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { applyRouterMiddleware, browserHistory, Router } from "react-router";
+import { syncHistoryWithStore } from "react-router-redux";
+import createRoutes from "./routes";
+import configureStore from "./store/configureStore";
+import preRenderMiddleware from "./middlewares/preRenderMiddleware";
+import * as useScroll from "react-router-scroll/lib/useScroll";
 
 // Grab the state from a global injected into server-generated HTML
-const initialState = window['__INITIAL_STATE__'];
+/* tslint:disable */
+const initialState = window["__INITIAL_STATE__"];
 
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
@@ -18,10 +19,11 @@ const routes = createRoutes();
 // Callback function handling frontend route changes.
 function onUpdate() {
   // Prevent duplicate fetches when first loaded.
-  if (window['__INITIAL_STATE__'] !== null) {
-    window['__INITIAL_STATE__'] = null;
+  if (window["__INITIAL_STATE__"] !== null) {
+    window["__INITIAL_STATE__"] = null;
     return;
   }
+  /* tslint:enable */
 
   const { components, params } = this.state;
 
@@ -37,4 +39,4 @@ render(
       render={applyRouterMiddleware(useScroll())}>
       {routes}
     </Router>
-  </Provider>, document.getElementById('app'));
+  </Provider>, document.getElementById("app"));
