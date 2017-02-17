@@ -76,7 +76,7 @@ class Home extends React.Component<IHomeProps, any> {
           <div className={cx("info")}>
             <p className={cx("name")}>Brennan Moore</p>
             <p className={cx("subheading")}>
-              I"m a product engineer based in NYC. I"m passionate about
+              I'm a product engineer based in NYC. I'm passionate about
                building innovative digital products people love.</p>
             <p className={cx("ellipsis")}>&hellip;</p>
             <p className={cx("links")}>

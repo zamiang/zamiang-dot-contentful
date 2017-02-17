@@ -14,7 +14,7 @@ const Footer = () => {
       <div className={cx("info")}>
         <p className={cx("name")}>Brennan Moore</p>
         <p className={cx("subheading")}>
-          I"m a product engineer based in NYC. I"m passionate about building innovative digital products people love.
+          I'm a product engineer based in NYC. I'm passionate about building innovative digital products people love.
         </p>
         <p className={cx("call-to-action")}>Follow me on Twitter <a href="https://twitter.com/zamiang">here</a>.</p>
       </div>
