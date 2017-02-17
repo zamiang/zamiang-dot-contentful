@@ -10,8 +10,8 @@ const schema = new GraphQLSchema({
       status: Status,
       post: Post,
       posts: Posts,
-    }
-  })
+    },
+  }),
 });
 
 export default schema;

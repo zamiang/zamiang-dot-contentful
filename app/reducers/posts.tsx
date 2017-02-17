@@ -40,7 +40,7 @@ export default function post(state = initialState, action: ThunkResponse) {
     case GET_POSTS_SUCCESS:
       return Object.assign({}, state, {
         postsFetching: false,
-        posts: action.res.data.posts,
+        posts: action.res.data.data.posts,
         totalPosts: action.res.data.total,
       });
     case GET_POSTS_FAILURE:
@@ -54,7 +54,7 @@ export default function post(state = initialState, action: ThunkResponse) {
       });
     case GET_POST_SUCCESS:
       return Object.assign({}, state, {
-        post: action.res.data.post,
+        post: action.res.data.data.post,
         isLoading: false,
       });
     case GET_POST_FAILURE:

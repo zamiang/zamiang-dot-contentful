@@ -21,7 +21,8 @@ const PostType = new GraphQLObjectType({
           description: 'The ID of the object.',
         },
       }),
-    })],
+    })
+  ],
   fields: () => ({
     id: {
       type: new GraphQLNonNull(GraphQLID),
@@ -51,9 +52,9 @@ const Post = {
     slug: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The slug of the Post',
-    }
+    },
   },
-  resolve: (root, { id }) => fetchPost(id),
+  resolve: (root, { slug }) => fetchPost(slug),
 };
 
 export default Post;

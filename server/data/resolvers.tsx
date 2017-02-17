@@ -15,7 +15,6 @@ interface ContentfulPost {
     slug: string;
     date: string;
     title: string;
-    subtitle: string;
     body: string;
   };
 }
@@ -37,7 +36,6 @@ const formatPost = (post: ContentfulPost) => {
     date: post.fields.date,
     modifiedDate: post.sys.updatedAt,
     title: post.fields.title,
-    subtitle: post.fields.subtitle,
     body: post.fields.body,
   };
 };

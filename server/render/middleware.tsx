@@ -1,10 +1,15 @@
+import axios from 'axios';
 import * as express from 'express';
+import { baseURL } from '../../config/env';
 import { createMemoryHistory, match } from 'react-router';
 import Error from '../../app/containers/NotFound';
 import createRoutes from '../../app/routes';
 import configureStore from '../../app/store/configureStore';
 import pageRenderer from './pageRenderer';
 import preRenderMiddleware from '../../app/middlewares/preRenderMiddleware';
+
+// configure baseURL for axios requests (for serverside API calls)
+axios.defaults.baseURL = baseURL;
 
 /*
  * Export render function to be used in server/config/routes.js
