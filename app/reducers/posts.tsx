@@ -9,7 +9,7 @@ import {
 } from "../types";
 import { IThunkResponse, IPost } from "../interfaces";
 
-interface IState {
+export interface IState {
   isLoading: boolean;
   posts: IPost[];
   post: IPost;

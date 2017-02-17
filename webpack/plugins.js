@@ -28,7 +28,6 @@ module.exports = ({ production = false, browser = false } = {}) => {
     return [
       new CheckerPlugin(),
       new webpack.EnvironmentPlugin(["NODE_ENV", "CONTENTFUL_KEY", "CONTENTFUL_URL", "CDN_URL"]),
-      new webpack.optimize.UglifyJsPlugin({ compress })
     ];
   }
   if (production && browser) {

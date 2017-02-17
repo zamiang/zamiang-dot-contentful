@@ -7,8 +7,8 @@
       "es6",
       "dom"
     ],
-    "moduleResolution": "node",
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
     "skipLibCheck": true,
@@ -19,12 +19,6 @@
     "./server/**/*"
   ],
   "exclude": [
-    "app",
     "node_modules"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": false,
-    "emitRequireType": false
-  }
+  ]
 }

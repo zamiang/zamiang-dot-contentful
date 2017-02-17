@@ -4,7 +4,7 @@ import {
 } from "../types";
 import { IAction, INavigationAction } from "../interfaces";
 
-interface IState {
+export interface IState {
   visible: boolean;
 }
 
@@ -12,7 +12,7 @@ const initialState: IState = {
   visible: false,
 };
 
-export default function navigation(state = initialState, action: IAction<INavigationAction>) {
+const navigation = (state = initialState, action: IAction<INavigationAction>) => {
   switch (action.type) {
     case NAVIGATION_SHOW:
       return Object.assign({}, state, {
@@ -25,4 +25,6 @@ export default function navigation(state = initialState, action: IAction<INaviga
     default:
       return state;
   }
-}
+};
+
+export default navigation;
