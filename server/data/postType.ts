@@ -1,4 +1,3 @@
-import { has } from "lodash";
 import {
   GraphQLString,
   GraphQLObjectType,
@@ -9,7 +8,7 @@ import {
 
 const PostType = new GraphQLObjectType({
   name: "Post",
-  isTypeOf: (obj) => has(obj, "title") && has(obj, "slug"),
+  isTypeOf: (obj) => obj.title && obj.title.length > 0,
   interfaces: [
     new GraphQLInterfaceType({
       name: "Node",

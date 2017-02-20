@@ -1,16 +1,15 @@
-# Personal Homepage using React Redux Typescript Contentful GraphQL
+# Personal Homepage using React Redux Typescript GraphQL over [Contentful](https://www.contentful.com)
 
 ## Features:
 - **universal** [**Redux**](https://github.com/reactjs/redux)
     - Server-side rendering with [**React Router**](https://github.com/reactjs/react-router) 2.x.
     - Integrating Redux with React Router with [React Router Redux](https://github.com/reactjs/react-router-redux)
-    - Asynchonous Data Fetching on server-side rendering
+    - Asynchonous Data Fetching on server-side rendering via GraphQL
 - Hot reloading using [**react-transform-hmr**](https://github.com/gaearon/react-transform-hmr)
-- TODO: Time travel using [**Redux-Devtools Chrome Extension**](https://github.com/zalmoxisus/redux-devtools-extension)
 - [**Webpack**](https://github.com/webpack/webpack) for both development and production bundles. It"s (in my opinion) the best bundler for JS, CSS, LESS, images, and lots more!
 - [**CSS Modules**](https://github.com/css-modules/css-modules) allows for modular and reusable CSS. Say goodbye to conflicts (most of them) and global scope
 - Express 4.x server
-- TODO: Testing
+- Testing with Jest
 
 ## Instructions
 

@@ -31,7 +31,7 @@ const initialState: IState = {
 
 const formatPosts = (posts: any) => {
   return posts.map((post) => post.node);
-}
+};
 
 export default function post(state = initialState, action: IThunkResponse) {
   switch (action.type) {

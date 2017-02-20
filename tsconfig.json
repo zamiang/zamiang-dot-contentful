@@ -11,12 +11,15 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "skipLibCheck": true,
-    "outDir": "compiled"
+    "sourceMap": true,
+    "outDir": "compiled",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-  "include": [
-    "./app/**/*",
-    "./server/**/*"
+  "files": [
+    "server/index.ts",
+    "app/client.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { PAGE_SIZE } from "../types";
 
 const classNames = require("classnames/bind");
-const styles = require("../css/components/page-navigation");
+const styles = require("../css/components/page-navigation.css");
 const cx = classNames.bind(styles);
 
 interface IPageProps extends React.Props<any> {
