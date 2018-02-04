@@ -1,23 +1,22 @@
 @import '../common/sizes';
+
 .header {
-  width: 100%;
   border-bottom: 1px solid #000;
   text-align: center;
   width: 100%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 35px 0px 2px;
+  padding: 35px 0 2px;
   overflow: hidden;
 }
 
 .link {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;
-  margin: 0px;
+  margin: 0;
   font-size: 20px;
   transition: border-color 0.2s ease-in-out;
   border-color: transparent;

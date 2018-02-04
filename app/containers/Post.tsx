@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as marked from 'marked';
 import * as moment from 'moment';
 import * as React from 'react';
@@ -6,10 +7,9 @@ import { Link } from 'react-router';
 import { fetchPost, fetchPosts } from '../actions/posts';
 import PostMeta from '../components/PostMeta';
 import RelatedPosts from '../components/RelatedPosts';
+import * as styles from '../css/components/post.css';
 import { IPost } from '../interfaces';
 
-const classNames = require('classnames/bind');
-const styles = require('../css/components/post.css');
 const cx = classNames.bind(styles);
 
 interface IPostProps extends React.Props<any> {

@@ -1,4 +1,5 @@
 @import '../common/sizes';
+
 .pagination {
   width: 100%;
   border-top: 1px solid #000;
@@ -11,8 +12,7 @@
 
 .previous,
 .next {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;
@@ -23,28 +23,28 @@
 }
 
 .next {
-  right: 0px;
+  right: 0;
 }
 
 .previous {
-  left: 0px;
+  left: 0;
 }
 
 .page {
   font-size: 33px;
   text-decoration: none;
   padding-top: 14px;
-  margin: 0px 2px;
+  margin: 0 2px;
   color: black;
   flex: 1 1 60px;
   height: 60px;
   width: 60px;
-  display: inline-block;
   text-align: center;
   border: 5px solid white;
   transition: var(--border-color) 0.3s;
   display: inline-block;
   vertical-align: top;
+
   &:hover {
     border: 5px solid black;
   }

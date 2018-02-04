@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as marked from 'marked';
 import * as moment from 'moment';
 import * as React from 'react';
@@ -6,16 +7,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchPosts } from '../actions/posts';
 import PageNavigation from '../components/PageNavigation';
+import * as styles from '../css/components/posts.css';
 import { IPost } from '../interfaces';
 import { ROOT_URL } from '../types';
 
-const classNames = require('classnames/bind');
-const styles = require('../css/components/posts.css');
 const cx = classNames.bind(styles);
-
-interface IParams {
-  pageNumber: number;
-}
 
 interface IPostsProps {
   posts: IPost[];

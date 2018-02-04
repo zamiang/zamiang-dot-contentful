@@ -8,13 +8,12 @@
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "prettier": "prettier --write \"{app,server,webpack,scripts}/**/*.{ts,tsx,js,css,graphql}\"",
     "typecheck": "tsc --project tsconfig.json --noEmit --pretty",
+    "stylelint": "stylelint 'app/**/*.css'",
     "clean": "rimraf public && rimraf compiled",
     "start": "cross-env NODE_ENV=production node compiled/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build:dev":
-      "cross-env NODE_ENV=development webpack --colors --display-error-details --config ./webpack/webpack.config.js",
-    "build":
-      "yarn run clean && cross-env NODE_ENV=production webpack --colors --display-error-details --config ./webpack/webpack.config.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --colors --display-error-details --config ./webpack/webpack.config.js",
+    "build": "yarn run clean && cross-env NODE_ENV=production webpack --colors --display-error-details --config ./webpack/webpack.config.js",
     "stats": "yarn run clean && cross-env NODE_ENV=production webpack --json > stats.json",
     "postinstall": "if [ $BUILD_ASSETS ]; then yarn run build; else yarn run build:dev; fi",
     "test": "jest",
@@ -27,17 +26,44 @@
   "license": "MIT",
   "jest": {
     "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.(gql|graphql)$": "jest-transform-graphql",
+      "^.+\\.(j|t)sx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "testEnvironment": "node",
     "testRegex": ".*\\.spec\\.ts$",
     "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+      "\\.(css)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": ["tsx", "ts", "js", "json"]
+    "collectCoverageFrom": [
+      "app/**/*.{ts,tsx}",
+      "server/**/*.{ts,tsx}",
+      "!app/assets/**",
+      "!app/**/*.css.d.ts",
+      "!app/graphql/**"
+    ],
+    "mapCoverage": true,
+    "testMatch": [
+      "<rootDir>/app/**/?(*.)(spec|test).ts?(x)",
+      "<rootDir>/server/**/?(*.)(spec|test).ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "setupFiles": [
+      "raf/polyfill"
+    ],
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    }
   },
   "devDependencies": {
+    "caniuse-lite": "^1.0.30000792",
+    "cssnano": "^3.10.0",
     "expect": "^22.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
@@ -100,7 +126,6 @@
     "graphql-server-express": "^1.3.2",
     "graphql-tools": "^2.19.0",
     "helmet": "^3.4.0",
-    "lodash.has": "^4.5.2",
     "marked": "^0.3.5",
     "method-override": "^2.3.7",
     "moment": "^2.17.1",
@@ -124,6 +149,8 @@
     "rimraf": "^2.5.4",
     "source-map-support": "^0.5.3",
     "style-loader": "^0.20.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
     "tinycolor2": "^1.4.1",
     "ts-loader": "^3.4.0",
     "typescript": "^2.1.6",

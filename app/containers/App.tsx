@@ -1,9 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import * as styles from '../css/main.css';
 import Footer from './Footer';
 import Header from './Header';
 
-const classNames = require('classnames/bind');
-const styles = require('../css/main.css');
 const cx = classNames.bind(styles);
 
 const App = (props: React.Props<any>) => {

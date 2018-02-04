@@ -1,13 +1,13 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchPosts } from '../actions/posts';
+import * as styles from '../css/components/home.css';
 import { IPost } from '../interfaces';
 import { ROOT_URL } from '../types';
 
-const classNames = require('classnames/bind');
-const styles = require('../css/components/home.css');
 const cx = classNames.bind(styles);
 
 interface IParams {

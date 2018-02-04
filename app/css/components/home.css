@@ -1,9 +1,11 @@
 @import '../common/sizes';
+
 .home {
   text-align: center;
   max-width: var(--maxWidth);
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 60px var(--gutter) 60px;
+
   @media (--small-viewport) {
     padding: 50px 20px 50px;
   }
@@ -16,11 +18,11 @@
 .small-border {
   border-bottom: 2px solid #000;
   width: 32px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 .caps {
-  margin: 0px auto 10px;
+  margin: 0 auto 10px;
   text-transform: uppercase;
   font-size: 20px;
   text-align: center;
@@ -28,15 +30,15 @@
 
 .project {
   position: relative;
-  padding: var(--home-padding) 0px;
-  margin: 0px auto;
+  padding: var(--home-padding) 0;
+  margin: 0 auto;
   max-width: 600px;
   text-align: left;
   border-bottom: 1px solid #000;
 }
 
 .project:last-child {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .project h2 {
@@ -55,26 +57,25 @@
   font-weight: normal;
   max-width: 444px;
   margin-left: 32px;
+
   @media (--small-viewport) {
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 
 .portrait {
   border-radius: 50%;
-  border: 0px solid #fff;
+  border: 0 solid #fff;
   height: 200px;
   width: 200px;
   overflow: hidden;
-  margin: 0px auto;
+  margin: 0 auto;
   mix-blend-mode: multiply;
   margin-bottom: 15px;
 }
 
 .name {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
-  line-height: 148%;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', sans-serif;
   letter-spacing: 2px;
   font-weight: normal;
   font-size: 28px;
@@ -86,15 +87,13 @@
 
 .subheading {
   max-width: 450px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-bottom: 21px;
 }
 
 .links {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', sans-serif;
   line-height: 148%;
-  letter-spacing: 2px;
   font-weight: normal;
   text-transform: uppercase;
   text-align: center;
@@ -114,7 +113,7 @@
 }
 
 .section:last-child {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .post {
@@ -123,7 +122,7 @@
 
 .posts {
   max-width: 420px;
-  margin: 20px auto 0px;
+  margin: 20px auto 0;
   text-align: left;
 }
 

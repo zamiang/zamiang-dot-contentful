@@ -1,8 +1,8 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router';
+import * as styles from '../css/components/error.css';
 
-const classNames = require('classnames/bind');
-const styles = require('../css/components/error.css');
 const cx = classNames.bind(styles);
 
 const NotFound = () => {

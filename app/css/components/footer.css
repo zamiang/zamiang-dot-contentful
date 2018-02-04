@@ -1,8 +1,8 @@
 @import '../common/sizes';
+
 .footer {
-  padding-bottom: 20px;
   width: 100%;
-  padding: 80px 0px;
+  padding: 80px 0;
   position: relative;
   border-top: 1px solid #000;
   text-align: center;
@@ -18,18 +18,17 @@
 
 .portrait {
   border-radius: 50%;
-  border: 0px solid #fff;
+  border: 0 solid #fff;
   height: 200px;
   width: 200px;
   overflow: hidden;
-  margin: 0px auto;
+  margin: 0 auto;
   mix-blend-mode: multiply;
   margin-bottom: 15px;
 }
 
 .name {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;
@@ -37,18 +36,16 @@
   text-align: center;
   color: #333;
   margin-bottom: 28px;
-  line-height: 148%;
 }
 
 .subheading {
   max-width: 450px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-bottom: 21px;
 }
 
 .written-by-note {
-  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
-    'ITC Franklin Gothic', Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic', serif;
   line-height: 148%;
   letter-spacing: 2px;
   text-transform: uppercase;

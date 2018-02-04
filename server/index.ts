@@ -48,6 +48,6 @@ export async function main(options: IMainOptions) {
 
 if (require.main === module) {
   main({
-    env: process.env.NODE_ENV,
+    env: process.env.NODE_ENV!,
   });
 }

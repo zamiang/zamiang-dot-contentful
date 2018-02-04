@@ -1,7 +1,9 @@
 @import '../common/sizes';
+
 .container {
   text-align: center;
   padding-top: 150px;
+
   @media (--small-viewport) {
     padding-top: 100px;
   }

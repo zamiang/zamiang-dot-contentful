@@ -2,37 +2,28 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const S3Plugin = require('webpack-s3-plugin');
 const AssetHashPlugin = require('./assetHash.js');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = ({ production = false, browser = false } = {}) => {
-  const bannerOptions = { raw: true, banner: "require('source-map-support').install();" };
   const compress = { warnings: false };
   const loaderOptionsPluginOptions = { minimize: true, debug: false };
-
-  if (!production && !browser) {
-    return [
-      new CheckerPlugin(),
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new webpack.BannerPlugin(bannerOptions),
-    ];
-  }
-  if (!production && browser) {
-    return [
-      new CheckerPlugin(),
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin(),
-    ];
+  const plugins = [
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_OAUTH_TOKEN']),
+    new webpack.NamedModulesPlugin(),
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    new webpack.NoEmitOnErrorsPlugin(), // do not emit compiled assets that include errors
+  ];
+  if (!production) {
+    plugins.push([new webpack.EnvironmentPlugin(['NODE_ENV'])]);
   }
   if (production && !browser) {
-    return [
-      new CheckerPlugin(),
+    plugins.push([
       new webpack.EnvironmentPlugin(['NODE_ENV', 'CONTENTFUL_KEY', 'CONTENTFUL_URL', 'CDN_URL']),
-    ];
+    ]);
   }
   if (production && browser) {
-    return [
-      new CheckerPlugin(),
+    plugins.push([
       new AssetHashPlugin(),
       new webpack.EnvironmentPlugin(['NODE_ENV', 'CONTENTFUL_KEY', 'CONTENTFUL_URL', 'CDN_URL']),
       new webpack.optimize.OccurrenceOrderPlugin(),
@@ -40,7 +31,17 @@ module.exports = ({ production = false, browser = false } = {}) => {
         filename: 'styles/main.[hash].css',
         allChunks: true,
       }),
-      new webpack.optimize.UglifyJsPlugin({ compress }),
+      new UglifyJSPlugin({
+        exclude: /node_modules/,
+        sourceMap: true,
+        parallel: true,
+        uglifyOptions: {
+          ie8: false,
+          ecma: 8,
+          warnings: false,
+          mangle: true,
+        },
+      }),
       new S3Plugin({
         exclude: /.*\.html$/,
         s3Options: {
@@ -54,7 +55,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
           CacheControl: 'max-age=86400',
         },
       }),
-    ];
+    ]);
   }
-  return [];
+  return plugins;
 };
