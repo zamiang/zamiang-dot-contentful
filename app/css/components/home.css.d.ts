@@ -1,4 +1,5 @@
 export const home: string;
+export const smallBorder: string;
 export const caps: string;
 export const project: string;
 export const description: string;
@@ -10,3 +11,4 @@ export const ellipsis: string;
 export const section: string;
 export const post: string;
 export const posts: string;
+export const sideGradient: string;

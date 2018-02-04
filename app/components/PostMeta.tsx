@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import Helmet from 'react-helmet';
 import { IPost } from '../interfaces';
 import { ROOT_URL } from '../types';
 

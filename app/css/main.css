@@ -169,8 +169,3 @@ h2.caps {
 h3 {
   margin-bottom: 3px;
 }
-
-.overflow-hidden {
-  overflow-x: hidden;
-  height: 100vh;
-}

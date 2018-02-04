@@ -2,6 +2,7 @@ const fs = require('fs');
 const PATHS = require('./paths');
 const rules = require('./rules');
 const plugins = require('./plugins');
+const externals = require('./externals');
 const resolve = require('./resolve');
 
 module.exports = (env = '') => {
@@ -18,6 +19,7 @@ module.exports = (env = '') => {
     entry: { server: '../server/index' },
     target: 'node',
     node,
+    externals,
     output: {
       path: PATHS.compiled,
       filename: 'server.js',
@@ -63,6 +65,7 @@ module.exports = (env = '') => {
     entry: { server: '../server/index' },
     target: 'node',
     node,
+    externals,
     output: {
       path: PATHS.compiled,
       filename: '[name].dev.js',

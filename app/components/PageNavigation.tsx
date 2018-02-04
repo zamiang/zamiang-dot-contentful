@@ -1,10 +1,7 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router';
 import * as styles from '../css/components/page-navigation.css';
 import { PAGE_SIZE } from '../types';
-
-const cx = classNames.bind(styles);
 
 interface IPageProps extends React.Props<any> {
   currentPage: number;
@@ -26,14 +23,14 @@ class PageNavigation extends React.Component<IPageProps, any> {
       rightArrowClass.push('hidden');
     }
     return (
-      <div className={cx('pagination')}>
-        <Link to={prevPageLink} className={cx(leftArrowClass)}>
+      <div className={styles.pagination}>
+        <Link to={prevPageLink} className={styles.previous}>
           Previous
         </Link>
-        <span className={cx('page-number')}>
+        <span>
           {currentPage} of {maxPages}
         </span>
-        <Link to={nextPageLink} className={cx(rightArrowClass)}>
+        <Link to={nextPageLink} className={styles.next}>
           Next
         </Link>
       </div>

@@ -31,7 +31,7 @@
   border-color: transparent;
 }
 
-.small-border {
+.smallBorder {
   border-bottom: 2px solid #000;
   width: 32px;
   margin: 15px auto 35px;
@@ -52,13 +52,13 @@
   position: relative;
 }
 
-.bottom-gradient {
+.bottomGradient {
   display: block;
   position: relative;
   border-top: 2px solid #000;
 }
 
-.more-link {
+.moreLink {
   padding-top: 30px;
   display: inline-block;
 

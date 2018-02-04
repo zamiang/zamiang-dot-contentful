@@ -10,8 +10,8 @@ export default () => {
   return (
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="/posts" component={Posts} />
-      <Route path="/posts/:pageNumber" component={Posts} />
+      <Route path="/posts" component={Posts as any} />
+      <Route path="/posts/:pageNumber" component={Posts as any} />
       <Route path="/post/:postSlug" component={Post} />
     </Route>
   );

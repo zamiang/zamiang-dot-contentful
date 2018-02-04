@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import * as express from 'express';
 import * as webpack from 'webpack';
 import expressConfig from './express';
@@ -15,7 +17,6 @@ export async function main(options: IMainOptions) {
     // enable webpack hot module replacement
     /* tslint:disable */
     const webpackDevMiddleware = require('webpack-dev-middleware');
-    const webpackHotMiddleware = require('webpack-hot-middleware');
     const webpackConfig = require('../webpack/webpack.config');
     const devBrowserConfig = webpackConfig('browser');
     /* tslint:enable */
@@ -26,7 +27,6 @@ export async function main(options: IMainOptions) {
         publicPath: devBrowserConfig.output.publicPath,
       }),
     );
-    app.use(webpackHotMiddleware(compiler));
   }
 
   expressConfig(app);

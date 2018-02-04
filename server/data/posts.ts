@@ -50,7 +50,7 @@ const Posts = {
       type: GraphQLInt,
     },
   },
-  resolve: async (root, options) => {
+  resolve: async (root: any, options: any) => {
     return fetchPosts(options);
   },
 };

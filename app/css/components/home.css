@@ -15,7 +15,7 @@
   text-decoration: none;
 }
 
-.small-border {
+.smallBorder {
   border-bottom: 2px solid #000;
   width: 32px;
   margin: 0 auto;
@@ -126,7 +126,7 @@
   text-align: left;
 }
 
-.side-gradient {
+.sideGradient {
   position: absolute;
   top: 400px;
   height: 300px;

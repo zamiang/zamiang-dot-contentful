@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
-import * as Helmet from 'react-helmet';
+import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 
 import { RouterContext } from 'react-router';

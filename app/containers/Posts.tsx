@@ -1,24 +1,36 @@
-import * as classNames from 'classnames';
 import * as marked from 'marked';
 import * as moment from 'moment';
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { withRouter } from 'react-router';
+import { compose } from 'redux';
 import { fetchPosts } from '../actions/posts';
 import PageNavigation from '../components/PageNavigation';
 import * as styles from '../css/components/posts.css';
 import { IPost } from '../interfaces';
 import { ROOT_URL } from '../types';
 
-const cx = classNames.bind(styles);
+interface IProps {
+  history: History;
+  match?: {
+    params: {
+      pageNumber: string;
+    };
+  };
+}
 
-interface IPostsProps {
+interface IStateProps {
   posts: IPost[];
   totalPosts: number;
-  params?: any;
+}
+
+interface IDispatchProps {
   fetchPosts: any;
 }
+
+type allProps = IProps & IStateProps & IDispatchProps;
 
 function mapStateToProps(state: any) {
   return {
@@ -29,54 +41,55 @@ function mapStateToProps(state: any) {
 
 const mapDispatchToProps = { fetchPosts };
 
-class Posts extends React.Component<IPostsProps, any> {
-  public static defaultProps = {
-    currentPage: 1,
-  };
-
+class Posts extends React.Component<allProps, {}> {
   public static need = [fetchPosts];
 
-  public componentWillReceiveProps(nextProps: IPostsProps) {
-    const { params } = this.props;
+  public componentWillReceiveProps(nextProps: allProps) {
+    const { match } = this.props;
 
     // new page
-    if (nextProps.params.pageNumber !== params.pageNumber) {
-      this.props.fetchPosts(nextProps.params);
+    if (nextProps.match && nextProps.match.params.pageNumber) {
+      if (match && match.params.pageNumber !== nextProps.match.params.pageNumber) {
+        this.props.fetchPosts(nextProps.match.params.pageNumber);
+      }
     }
   }
 
   public render() {
-    const { posts, totalPosts, params } = this.props;
+    const { posts, totalPosts, match } = this.props;
     const fullTitle = 'Brennan Moore | Posts';
-    const pageNumber = params.pageNumber || 1;
+    const pageNumber = match && match.params.pageNumber ? parseInt(match.params.pageNumber, 10) : 1;
     const postsHtml = posts.map((post: IPost) => {
       return (
-        <div key={post.id} className={cx('post')}>
-          <div className={cx('time')}>{moment(post.date).format('Do MMMM YYYY')}</div>
-          <div className={cx('title')}>
+        <div key={post.id} className={styles.post}>
+          <div className={styles.time}>{moment(post.date).format('Do MMMM YYYY')}</div>
+          <div className={styles.title}>
             <Link to={`/post/${post.slug}`}>{post.title}</Link>
           </div>
-          <div className={cx('small-border')} />
-          <div className={cx('body')} dangerouslySetInnerHTML={{ __html: marked(post.body) }} />
-          <div className={cx('bottom-gradient')} />
-          <Link className={cx('more-link')} to={`/post/${post.slug}`}>
+          <div className={styles.smallBorder} />
+          <div className={styles.body} dangerouslySetInnerHTML={{ __html: marked(post.body) }} />
+          <div className={styles.bottomGradient} />
+          <Link className={styles.moreLink} to={`/post/${post.slug}`}>
             Read More
           </Link>
         </div>
       );
     });
     return (
-      <div className={cx('posts')}>
+      <div>
         <Helmet
           title={fullTitle}
           link={[{ rel: 'canonical', href: `${ROOT_URL}/posts` }]}
           meta={[{ property: 'og:title', content: fullTitle }]}
         />
-        <div className={cx('section')}>{postsHtml}</div>
+        <div>{postsHtml}</div>
         <PageNavigation currentPage={pageNumber} totalPosts={totalPosts} />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default compose(
+  withRouter,
+  connect<IStateProps, IDispatchProps, IProps>(mapStateToProps, mapDispatchToProps),
+)(Posts);

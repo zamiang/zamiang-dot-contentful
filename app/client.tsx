@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { browserHistory, Router } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
 import preRenderMiddleware from './middlewares/preRenderMiddleware';
 import createRoutes from './routes';
 import configureStore from './store/configureStore';
@@ -13,7 +12,6 @@ import configureStore from './store/configureStore';
 const initialState = (window as any)['__INITIAL_STATE__'];
 
 const store = configureStore(initialState, browserHistory);
-const history = syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes();
 
 // Callback function handling frontend route changes.
@@ -33,7 +31,7 @@ function onUpdate() {
 // Router converts <Route> element hierarchy to a route config:
 render(
   <Provider store={store}>
-    <Router history={history} onUpdate={onUpdate}>
+    <Router history={browserHistory} onUpdate={onUpdate}>
       {routes}
     </Router>
   </Provider>,

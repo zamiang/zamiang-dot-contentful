@@ -11,7 +11,7 @@ const Post = {
       description: 'The slug of the Post',
     },
   },
-  resolve: async (root, { slug }) => {
+  resolve: async (root: any, { slug }: any) => {
     return fetchPost(slug);
   },
 };

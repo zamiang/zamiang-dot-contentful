@@ -6,7 +6,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = ({ production = false, browser = false } = {}) => {
   let plugins = [
     new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_OAUTH_TOKEN']),
     new webpack.NamedModulesPlugin(),
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
   ];
