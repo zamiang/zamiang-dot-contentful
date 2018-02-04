@@ -9,4 +9,4 @@ ga("send", "pageview");
 </script>
 `;
 
-export default (process.env.NODE_ENV !== "production" ? "" : analytics);
+export default (process.env.NODE_ENV !== 'production' ? '' : analytics);

@@ -1,16 +1,12 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import * as marked from "marked";
-import * as moment from "moment";
-import { Link } from "react-router";
-import { fetchPost, fetchPosts } from "../actions/posts";
-import PostMeta from "../components/PostMeta";
-import RelatedPosts from "../components/RelatedPosts";
-import { IPost } from "../interfaces";
-
-const classNames = require("classnames/bind");
-const styles = require("../css/components/post.css");
-const cx = classNames.bind(styles);
+import * as marked from 'marked';
+import * as moment from 'moment';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { fetchPost, fetchPosts } from '../actions/posts';
+import PostMeta from '../components/PostMeta';
+import RelatedPosts from '../components/RelatedPosts';
+import * as styles from '../css/components/post.css';
+import { IPost } from '../interfaces';
 
 interface IPostProps extends React.Props<any> {
   post: IPost;
@@ -31,11 +27,7 @@ function mapStateToProps(state: any) {
 const mapDispatchToProps = { fetchPost };
 
 class PostContainer extends React.Component<IPostProps, any> {
-
-  public static need = [
-    fetchPost,
-    fetchPosts,
-  ];
+  public static need = [fetchPost, fetchPosts];
 
   public static defaultProps = {
     isLoading: false,
@@ -53,16 +45,15 @@ class PostContainer extends React.Component<IPostProps, any> {
 
   public render() {
     const { post, posts } = this.props;
-    const body = post.body ? marked(post.body) : "";
+    const body = post.body ? marked(post.body) : '';
     return (
       <div>
         <PostMeta post={post} />
-        <div className={cx("post")}>
-          <div className={cx("time")}>{moment(post.date).format("Do MMMM YYYY")}</div>
-          <div className={cx("title")}>{post.title}</div>
-          <div className={cx("small-border")} />
-          <div className={cx("body")} dangerouslySetInnerHTML={{ __html: body }} />
-          <div className={cx("bottom-gradient")}></div>
+        <div className={styles.post}>
+          <div className={styles.time}>{moment(post.date).format('Do MMMM YYYY')}</div>
+          <div className={styles.title}>{post.title}</div>
+          <div className={styles.smallBorder} />
+          <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <RelatedPosts posts={posts} />
       </div>
@@ -70,7 +61,4 @@ class PostContainer extends React.Component<IPostProps, any> {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PostContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);

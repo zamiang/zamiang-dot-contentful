@@ -1,12 +1,18 @@
-const PATHS = require("../paths");
+const PATHS = require('../paths');
 
 module.exports = ({ production = false, browser = false } = {}) => {
   return {
     test: /\.tsx?$/,
-    loader: "ts-loader",
     exclude: PATHS.modules,
-    options: {
-      logInfoToStdOut: true
-    }
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+          configFile: 'tsconfig.webpack.json',
+          happyPackMode: true,
+        },
+      },
+    ],
   };
 };

@@ -1,11 +1,11 @@
-import { GraphQLObjectType, GraphQLBoolean } from "graphql";
+import { GraphQLBoolean, GraphQLObjectType } from 'graphql';
 
 const StatusType = new GraphQLObjectType({
-  name: "Status",
+  name: 'Status',
   fields: {
     ping: {
       type: GraphQLBoolean,
-      description: "GraphQL ping",
+      description: 'GraphQL ping',
       resolve: () => true,
     },
   },

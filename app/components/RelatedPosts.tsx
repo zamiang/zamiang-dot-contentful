@@ -1,32 +1,29 @@
-import * as React from "react";
-import { Link } from "react-router";
-import { IPost } from "../interfaces";
-
-const classNames = require("classnames/bind");
-const styles = require("../css/components/related-posts.css");
-const cx = classNames.bind(styles);
+import * as React from 'react';
+import { Link } from 'react-router';
+import * as styles from '../css/components/related-posts.css';
+import { IPost } from '../interfaces';
 
 interface IRelatedPostProps {
   posts: IPost[];
 }
 
 const RelatedPosts = (props: IRelatedPostProps) => {
-  const relatedPosts = props.posts.slice(0, 8).map((post) => {
+  const relatedPosts = props.posts.slice(0, 8).map(post => {
     return (
-      <div key={post.id} className={cx("post")}>
+      <div key={post.id} className={styles.post}>
         <Link to={`/post/${post.slug}`}>{post.title}</Link>
-      </div>);
+      </div>
+    );
   });
   return (
-    <div className={cx("related-posts")}>
-      <div className={cx("content")}>
-        <h2 className={cx("caps")}>Featured Posts</h2>
-        <div className={cx("small-border")}></div>
-        <div className={cx("posts")}>
-          {relatedPosts}
-        </div>
+    <div className={styles.relatedPosts}>
+      <div className={styles.content}>
+        <h2 className={styles.caps}>Featured Posts</h2>
+        <div className={styles.smallBorder} />
+        <div className={styles.posts}>{relatedPosts}</div>
       </div>
-    </div>);
+    </div>
+  );
 };
 
 export default RelatedPosts;

@@ -1,23 +1,23 @@
-export const GET_POSTS = "GET_POSTS";
-export const GET_POSTS_REQUEST = "GET_POSTS_REQUEST";
-export const GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";
-export const GET_POSTS_FAILURE = "GET_POSTS_FAILURE";
+export const GET_POSTS = 'GET_POSTS';
+export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST';
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
+export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE';
 
-export const GET_POST = "GET_POST";
-export const GET_POST_REQUEST = "GET_POST_REQUEST";
-export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
-export const GET_POST_FAILURE = "GET_POST_FAILURE";
+export const GET_POST = 'GET_POST';
+export const GET_POST_REQUEST = 'GET_POST_REQUEST';
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+export const GET_POST_FAILURE = 'GET_POST_FAILURE';
 
-export const GET_SITE_DATA = "GET_SITE_DATA";
-export const GET_SITE_DATA_REQUEST = "GET_SITE_DATA_REQUEST";
-export const GET_SITE_DATA_SUCCESS = "GET_SITE_DATA_SUCCESS";
-export const GET_SITE_DATA_FAILURE = "GET_SITE_DATA_FAILURE";
-export const SITE_DATA_FETCHED = "SITE_DATA_FETCHED";
+export const GET_SITE_DATA = 'GET_SITE_DATA';
+export const GET_SITE_DATA_REQUEST = 'GET_SITE_DATA_REQUEST';
+export const GET_SITE_DATA_SUCCESS = 'GET_SITE_DATA_SUCCESS';
+export const GET_SITE_DATA_FAILURE = 'GET_SITE_DATA_FAILURE';
+export const SITE_DATA_FETCHED = 'SITE_DATA_FETCHED';
 
-export const NAVIGATION_HIDE = "NAVIGATION_HIDE";
-export const NAVIGATION_SHOW = "NAVIGATION_SHOW";
+export const NAVIGATION_HIDE = 'NAVIGATION_HIDE';
+export const NAVIGATION_SHOW = 'NAVIGATION_SHOW';
 
-export const ROOT_URL = "https://www.zamiang.com";
+export const ROOT_URL = 'https://www.zamiang.com';
 
-export const CHANGE_PAGE = "CHANGE_PAGE";
+export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const PAGE_SIZE = 10;

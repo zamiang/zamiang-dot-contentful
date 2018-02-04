@@ -1,91 +1,82 @@
-/**
- * webpack.config.js
- *
- * process.env.NODE_ENV is used to determine to return production config or not (an array with both browser and server config)
- * if not, env is used to determine to return browser-rendering config (for hot module replacement) or server-side rendering config (for node)
- * env is a string passed by "webpack --env" on command line or calling this function directly
- * if env contains substring "browser", then returns browser-rendering config, otherwise server-rendering config
- *
- * NOTE: browser/server is client/server-side rendering respectively in universal/isomorphic javascript
- *
- */
-const fs = require("fs");
-const PATHS = require("./paths");
-const rules = require("./rules");
-const plugins = require("./plugins");
-const externals = require("./externals");
-const resolve = require("./resolve");
+const dotenv = require('dotenv');
+const fs = require('fs');
+const PATHS = require('./paths');
+const rules = require('./rules');
+const plugins = require('./plugins');
+const externals = require('./externals');
+const resolve = require('./resolve');
 
-module.exports = (env = "") => {
-  const isProduction = process.env.NODE_ENV === "production";
-  const isBrowser = (env.indexOf("browser") >= 0);
-  console.log(`Running webpack in ${process.env.NODE_ENV} mode on ${isBrowser ? "browser" : "server"}`);
+module.exports = (env = '') => {
+  dotenv.config();
 
-  const hotMiddlewareScript = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";
+  const isProduction = process.env.NODE_ENV === 'production';
+  const isBrowser = env.indexOf('browser') >= 0;
+  console.log(
+    `Running webpack in ${process.env.NODE_ENV} mode on ${isBrowser ? 'browser' : 'server'}`,
+  );
+
   const node = { __dirname: true, __filename: true };
 
   const prodServerRender = {
     context: PATHS.app,
-    entry: { server: "../server/index" },
-    target: "node",
+    entry: { server: '../server/index' },
+    target: 'node',
     node,
     externals,
     output: {
       path: PATHS.compiled,
-      filename: "server.js",
+      filename: 'server.js',
       publicPath: PATHS.public,
-      libraryTarget: "commonjs2"
     },
     module: { rules: rules({ production: true, browser: false }) },
     resolve,
-    plugins: plugins({ production: true, browser: false })
+    plugins: plugins({ production: true, browser: false }),
   };
 
   const prodBrowserRender = {
     context: PATHS.app,
-    entry: { app: ["./client"] },
+    entry: { app: ['./client'] },
     node,
     output: {
       path: PATHS.assets,
-      filename: "[name].[hash].js",
-      publicPath: PATHS.public
+      filename: '[name].[hash].js',
+      publicPath: PATHS.public,
     },
     module: { rules: rules({ production: true, browser: true }) },
     resolve,
-    plugins: plugins({ production: true, browser: true })
+    plugins: plugins({ production: true, browser: true }),
   };
 
   const devBrowserRender = {
-    devtool: "eval",
+    devtool: 'eval',
     context: PATHS.app,
-    entry: { app: ["./client", hotMiddlewareScript] },
+    entry: { app: ['./client'] },
     node,
     output: {
       path: PATHS.assets,
-      filename: "[name].js",
-      publicPath: PATHS.public
+      filename: '[name].js',
+      publicPath: PATHS.public,
     },
     module: { rules: rules({ production: false, browser: true }) },
     resolve,
-    plugins: plugins({ production: false, browser: true })
+    plugins: plugins({ production: false, browser: true }),
   };
 
   const devServerRender = {
-    devtool: "sourcemap",
+    devtool: 'sourcemap',
     context: PATHS.app,
-    entry: { server: "../server/index" },
-    target: "node",
+    entry: { server: '../server/index' },
+    target: 'node',
     node,
     externals,
     output: {
       path: PATHS.compiled,
-      filename: "[name].dev.js",
+      filename: '[name].dev.js',
       publicPath: PATHS.public,
-      libraryTarget: "commonjs2",
     },
     module: { rules: rules({ production: false, browser: false }) },
     resolve,
-    plugins: plugins({ production: false, browser: false })
+    plugins: plugins({ production: false, browser: false }),
   };
 
   const prodConfig = [prodBrowserRender, prodServerRender];

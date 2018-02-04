@@ -1,5 +1,6 @@
 @custom-media --small-viewport (max-width: 900px);
 @custom-media --large-viewport (min-width: 900px);
+
 :root {
   --site-border-size: 10px;
   --gutter: 95px;
@@ -14,17 +15,17 @@
   --text-underline-gap-minimum: 1.5px;
   --color-black: #000;
   --color-white: #fff;
-  --color-yellow: #FFF5AD;
-  --color-gray: #F6F6F6;
+  --color-yellow: #fff5ad;
+  --color-gray: #f6f6f6;
   --color-med-gray: #656565;
-  --color-dark-gray: #333333;
-  --border-color: #B2B2B2;
+  --color-dark-gray: #333;
+  --border-color: #b2b2b2;
   --blue: steelblue;
-  --border-color: #BED0D0;
+  --border-color: #bed0d0;
   --gray: lightgrey;
   --dark-gray: #333;
   --light-gray: #aaa;
   --default-font-color: rgba(0, 0, 0, 0.8);
-  --highlight: #E7FF00;
+  --highlight: #e7ff00;
   --home-padding: 35px;
 }

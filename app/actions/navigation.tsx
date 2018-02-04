@@ -1,5 +1,5 @@
-import * as types from "../types";
-import { IAction, INavigationAction } from "../interfaces";
+import * as types from '../types';
+import { IAction, INavigationAction } from '../interfaces';
 
 export function hideNavigation(): IAction<INavigationAction> {
   return {

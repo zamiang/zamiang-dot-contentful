@@ -1,13 +1,12 @@
+import { IPost, IThunkResponse } from '../interfaces';
 import {
-  CHANGE_PAGE,
-  GET_POSTS_REQUEST,
-  GET_POSTS_SUCCESS,
-  GET_POSTS_FAILURE,
-  GET_POST_SUCCESS,
   GET_POST_FAILURE,
   GET_POST_REQUEST,
-} from "../types";
-import { IThunkResponse, IPost } from "../interfaces";
+  GET_POST_SUCCESS,
+  GET_POSTS_FAILURE,
+  GET_POSTS_REQUEST,
+  GET_POSTS_SUCCESS,
+} from '../types';
 
 export interface IState {
   isLoading: boolean;
@@ -19,18 +18,18 @@ export interface IState {
 const initialState: IState = {
   posts: [],
   post: {
-    id: "",
-    title: "",
-    slug: "",
-    body: "",
-    date: "",
+    id: '',
+    title: '',
+    slug: '',
+    body: '',
+    date: '',
   },
   totalPosts: 10,
   isLoading: false,
 };
 
 const formatPosts = (posts: any) => {
-  return posts.map((post) => post.node);
+  return posts.map((p: any) => p.node);
 };
 
 export default function post(state = initialState, action: IThunkResponse) {
@@ -65,7 +64,6 @@ export default function post(state = initialState, action: IThunkResponse) {
         error: action.error,
         isLoading: false,
       });
-
     default:
       return state;
   }

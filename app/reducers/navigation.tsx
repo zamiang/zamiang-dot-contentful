@@ -1,8 +1,5 @@
-import {
-  NAVIGATION_HIDE,
-  NAVIGATION_SHOW,
-} from "../types";
-import { IAction, INavigationAction } from "../interfaces";
+import { IAction, INavigationAction } from '../interfaces';
+import { NAVIGATION_HIDE, NAVIGATION_SHOW } from '../types';
 
 export interface IState {
   visible: boolean;

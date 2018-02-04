@@ -1,22 +1,22 @@
 import {
-  GraphQLString,
-  GraphQLObjectType,
-  GraphQLNonNull,
   GraphQLInterfaceType,
   GraphQLID,
-} from "graphql";
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLString,
+} from 'graphql';
 
 const PostType = new GraphQLObjectType({
-  name: "Post",
-  isTypeOf: (obj) => obj.title && obj.title.length > 0,
+  name: 'Post',
+  isTypeOf: obj => obj.title && obj.title.length > 0,
   interfaces: [
     new GraphQLInterfaceType({
-      name: "Node",
-      description: "An object with a Globally Unique ID",
+      name: 'Node',
+      description: 'An object with a Globally Unique ID',
       fields: () => ({
         id: {
           type: new GraphQLNonNull(GraphQLID),
-          description: "The ID of the object.",
+          description: 'The ID of the object.',
         },
       }),
     }),

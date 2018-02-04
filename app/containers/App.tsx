@@ -1,18 +1,13 @@
-import * as React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-
-const classNames = require("classnames/bind");
-const styles = require("../css/main.css");
-const cx = classNames.bind(styles);
+import * as React from 'react';
+import * as styles from '../css/main.css';
+import Footer from './Footer';
+import Header from './Header';
 
 const App = (props: React.Props<any>) => {
   return (
-    <div className={cx("app")}>
+    <div className={styles.body}>
       <Header />
-      <div className={cx("body")}>
-        {props.children}
-      </div>
+      <div>{props.children}</div>
       <Footer />
     </div>
   );
