@@ -1,21 +1,21 @@
 # Personal Homepage using React Redux Typescript GraphQL over [Contentful](https://www.contentful.com)
 
 ## Features:
-- **universal** [**Redux**](https://github.com/reactjs/redux)
-    - Server-side rendering with [**React Router**](https://github.com/reactjs/react-router) 2.x.
-    - Integrating Redux with React Router with [React Router Redux](https://github.com/reactjs/react-router-redux)
-    - Asynchonous Data Fetching on server-side rendering via GraphQL
-- Hot reloading using [**react-transform-hmr**](https://github.com/gaearon/react-transform-hmr)
-- [**Webpack**](https://github.com/webpack/webpack) for both development and production bundles. It"s (in my opinion) the best bundler for JS, CSS, LESS, images, and lots more!
-- [**CSS Modules**](https://github.com/css-modules/css-modules) allows for modular and reusable CSS. Say goodbye to conflicts (most of them) and global scope
-- Express 4.x server
-- Testing with Jest
+
+* **universal** [**Redux**](https://github.com/reactjs/redux)
+  * Server-side rendering with [**React Router**](https://github.com/reactjs/react-router) 2.x.
+  * Asynchonous Data Fetching on server-side rendering via GraphQL
+* [**Webpack**](https://github.com/webpack/webpack) for both development and production bundles. It"s (in my opinion) the best bundler for JS, CSS, LESS, images, and lots more!
+* [**CSS Modules**](https://github.com/css-modules/css-modules) allows for modular and reusable CSS
+* Express 4.x server
+* Testing with Jest
 
 ## Instructions
 
 ### Build & Dev
 
 **Installation**
+
 ```bash
 yarn install
 ```
@@ -23,7 +23,7 @@ yarn install
 **Development**
 
 ```bash
-# Starts the server with Hot Reloading
+# Starts the server
 # Run webpack through webpack.config.dev.js
 yarn run dev
 ```
