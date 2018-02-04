@@ -12,7 +12,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
   if (!production) {
     plugins.push(new webpack.EnvironmentPlugin(['NODE_ENV']));
   }
-  if (production && !browser) {
+  if (production) {
     plugins.push(
       new webpack.EnvironmentPlugin(['NODE_ENV', 'CONTENTFUL_KEY', 'CONTENTFUL_URL', 'CDN_URL']),
     );
@@ -20,7 +20,6 @@ module.exports = ({ production = false, browser = false } = {}) => {
   if (production && browser) {
     plugins.push(
       new AssetHashPlugin(),
-      new webpack.EnvironmentPlugin(['NODE_ENV', 'CONTENTFUL_KEY', 'CONTENTFUL_URL', 'CDN_URL']),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new ExtractTextPlugin({
         filename: 'styles/main.[hash].css',

@@ -11,7 +11,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
 
   const createCssLoaders = embedCssInBundle => [
     {
-      loader: 'typings-for-css-modules-loader',
+      loader: embedCssInBundle ? 'typings-for-css-modules-loader' : 'css-loader/locals',
       options: {
         importLoaders: 1,
         localIdentName,
@@ -23,6 +23,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
     {
       loader: 'postcss-loader',
       options: {
+        ident: 'postcss',
         plugins: [
           postcssImport({ path: path.resolve(PATHS.app, './css') }),
           postcssCssnext({ browsers: ['> 1%', 'last 2 versions'] }),
