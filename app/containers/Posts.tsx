@@ -92,7 +92,7 @@ class Posts extends React.Component<allProps, {}> {
   }
 }
 
-export default compose(
+export default compose<IProps>(
   withRouter,
   connect<IStateProps, IDispatchProps, IProps>(mapStateToProps, mapDispatchToProps),
 )(Posts);
