@@ -6,6 +6,7 @@ const contentfulUrl =
   process.env.CONTENTFUL_URL || 'https://cdn.contentful.com/spaces/0hd36jc0fz5r';
 const token =
   process.env.CONTENTFUL_KEY || '235c062dd801b1c35e907bab86628be95555be0f9cfc9c6296e28a90e58dc331';
+
 const entriesUrl = `${contentfulUrl}/entries`;
 
 interface IContentfulPost {

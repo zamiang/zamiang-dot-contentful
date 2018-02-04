@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const fs = require('fs');
 const PATHS = require('./paths');
 const rules = require('./rules');
@@ -6,6 +7,8 @@ const externals = require('./externals');
 const resolve = require('./resolve');
 
 module.exports = (env = '') => {
+  dotenv.config();
+
   const isProduction = process.env.NODE_ENV === 'production';
   const isBrowser = env.indexOf('browser') >= 0;
   console.log(
