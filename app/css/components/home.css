@@ -1,4 +1,4 @@
-@import "../common/sizes";
+@import '../common/sizes';
 .home {
   text-align: center;
   max-width: var(--maxWidth);
@@ -32,7 +32,7 @@
   margin: 0px auto;
   max-width: 600px;
   text-align: left;
-  border-bottom: 1px solid #000
+  border-bottom: 1px solid #000;
 }
 
 .project:last-child {
@@ -43,7 +43,8 @@
   width: 91px;
 }
 
-.project h2, .project h2 a {
+.project h2,
+.project h2 a {
   color: #444;
   display: inline-block;
 }
@@ -61,7 +62,7 @@
 
 .portrait {
   border-radius: 50%;
-  border: 0px solid #FFF;
+  border: 0px solid #fff;
   height: 200px;
   width: 200px;
   overflow: hidden;
@@ -71,7 +72,8 @@
 }
 
 .name {
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;
@@ -89,7 +91,8 @@
 }
 
 .links {
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;
@@ -130,7 +133,7 @@
   height: 300px;
   width: 118%;
   left: -9%;
-  background: #E7FF00;
+  background: #e7ff00;
   z-index: 0;
   transform: rotate(22deg) translateZ(0);
   display: block;

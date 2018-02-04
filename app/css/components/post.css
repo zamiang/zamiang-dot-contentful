@@ -1,4 +1,4 @@
-@import "../common/sizes";
+@import '../common/sizes';
 .post {
   margin: 0px auto;
   max-width: 594px;
@@ -10,7 +10,8 @@
 }
 
 .title {
-  font-family: adobe-garamond-pro, Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  font-family: adobe-garamond-pro, Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text',
+    'Times New Roman', serif;
   line-height: 1.6em;
   font-weight: 400;
   font-style: normal;

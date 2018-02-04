@@ -1,12 +1,12 @@
-import axios from "axios";
-import * as express from "express";
-import { baseURL } from "../../config/env";
-import { createMemoryHistory, match } from "react-router";
-import Error from "../../app/containers/NotFound";
-import createRoutes from "../../app/routes";
-import configureStore from "../../app/store/configureStore";
-import pageRenderer from "./pageRenderer";
-import preRenderMiddleware from "../../app/middlewares/preRenderMiddleware";
+import axios from 'axios';
+import * as express from 'express';
+import { createMemoryHistory, match } from 'react-router';
+import Error from '../../app/containers/NotFound';
+import preRenderMiddleware from '../../app/middlewares/preRenderMiddleware';
+import createRoutes from '../../app/routes';
+import configureStore from '../../app/store/configureStore';
+import { baseURL } from '../../config/env';
+import pageRenderer from './pageRenderer';
 
 // configure baseURL for axios requests (for serverside API calls)
 axios.defaults.baseURL = baseURL;
@@ -30,17 +30,14 @@ export default function render(req: express.Request, res: express.Response) {
     } else if (renderProps) {
       // This method waits for all render component
       // promises to resolve before returning to browser
-      preRenderMiddleware(
-        store,
-        renderProps.components,
-        renderProps.params,
-      ).then(() => {
-        const status = renderProps.routes.reduce((prevstatus: number, route: any) => {
-          return route.status || prevstatus, undefined;
-        });
-        const html = pageRenderer(store, renderProps);
-        return res.status(status || 200).send(html);
-      })
+      preRenderMiddleware(store, renderProps.components, renderProps.params)
+        .then(() => {
+          const status = renderProps.routes.reduce((prevstatus: number, route: any) => {
+            return route.status; // TODO? || prevstatus, undefined;
+          });
+          const html = pageRenderer(store, renderProps);
+          return res.status(status || 200).send(html);
+        })
         .catch((error: string) => {
           console.error(error);
           res.status(500).send(Error());

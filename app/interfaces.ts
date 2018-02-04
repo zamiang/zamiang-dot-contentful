@@ -27,4 +27,6 @@ export interface IPost {
   date: string;
 }
 
-export interface INavigationAction { visible: boolean; };
+export interface INavigationAction {
+  visible: boolean;
+}

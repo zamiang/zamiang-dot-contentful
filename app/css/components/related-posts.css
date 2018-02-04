@@ -1,4 +1,4 @@
-@import "../common/sizes";
+@import '../common/sizes';
 
 .related-posts {
   border-top: 1px solid #000;
@@ -36,7 +36,7 @@
 }
 
 .post:before {
-  content: "●";
+  content: '●';
   color: #000;
   position: absolute;
   left: 0px;
@@ -51,14 +51,16 @@
   font-size: 18px;
   line-height: 120%;
   letter-spacing: 1px;
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
 }
 
 .caps {
   color: #222;
   font-size: 20px;
   letter-spacing: 1px;
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;

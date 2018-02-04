@@ -1,4 +1,4 @@
-@import "../common/sizes";
+@import '../common/sizes';
 .header {
   width: 100%;
   border-bottom: 1px solid #000;
@@ -12,7 +12,8 @@
 }
 
 .link {
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;

@@ -1,9 +1,9 @@
-import { GraphQLInt, GraphQLBoolean, GraphQLList, GraphQLObjectType, GraphQLNonNull } from "graphql";
-import PostType from "./postType";
-import { fetchPosts } from "./resolvers";
+import { GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
+import PostType from './postType';
+import { fetchPosts } from './resolvers';
 
 const PageInfo = new GraphQLObjectType({
-  name: "PageInfo",
+  name: 'PageInfo',
   fields: {
     total: {
       type: new GraphQLNonNull(GraphQLInt),
@@ -12,8 +12,8 @@ const PageInfo = new GraphQLObjectType({
 });
 
 const PostEdge = new GraphQLObjectType({
-  name: "PostEdge",
-  description: "Posts under node",
+  name: 'PostEdge',
+  description: 'Posts under node',
   fields: () => ({
     node: {
       type: PostType,
@@ -25,7 +25,7 @@ const PostEdge = new GraphQLObjectType({
 });
 
 const PostConnection = new GraphQLObjectType({
-  name: "PostConnection",
+  name: 'PostConnection',
   fields: () => ({
     edges: {
       type: new GraphQLList(PostEdge),
@@ -44,13 +44,13 @@ const PostConnection = new GraphQLObjectType({
 
 const Posts = {
   type: PostConnection,
-  description: "A list of Posts",
+  description: 'A list of Posts',
   args: {
     page: {
       type: GraphQLInt,
     },
   },
-  resolve: (root, options) => {
+  resolve: async (root, options) => {
     return fetchPosts(options);
   },
 };

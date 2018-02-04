@@ -1,4 +1,4 @@
-@import "../common/sizes";
+@import '../common/sizes';
 .pagination {
   width: 100%;
   border-top: 1px solid #000;
@@ -9,8 +9,10 @@
   position: relative;
 }
 
-.previous, .next {
-  font-family: "franklin-gothic-urw", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+.previous,
+.next {
+  font-family: 'franklin-gothic-urw', 'Franklin Gothic Medium', 'Franklin Gothic',
+    'ITC Franklin Gothic', Arial, sans-serif;
   line-height: 148%;
   letter-spacing: 2px;
   font-weight: normal;

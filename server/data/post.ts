@@ -1,20 +1,17 @@
-import {
-  GraphQLString,
-  GraphQLNonNull,
-} from "graphql";
-import { fetchPost } from "./resolvers";
-import PostType from "./postType";
+import { GraphQLNonNull, GraphQLString } from 'graphql';
+import PostType from './postType';
+import { fetchPost } from './resolvers';
 
 const Post = {
   type: PostType,
-  description: "A Post",
+  description: 'A Post',
   args: {
     slug: {
       type: new GraphQLNonNull(GraphQLString),
-      description: "The slug of the Post",
+      description: 'The slug of the Post',
     },
   },
-  resolve: (root, { slug }) => {
+  resolve: async (root, { slug }) => {
     return fetchPost(slug);
   },
 };

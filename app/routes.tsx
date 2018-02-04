@@ -1,10 +1,10 @@
-import * as React from "react";
-import { IndexRoute, Route } from "react-router";
+import * as React from 'react';
+import { IndexRoute, Route } from 'react-router';
 
-import App from "./containers/App";
-import Home from "./containers/Home";
-import Post from "./containers/Post";
-import Posts from "./containers/Posts";
+import App from './containers/App';
+import Home from './containers/Home';
+import Post from './containers/Post';
+import Posts from './containers/Posts';
 
 export default () => {
   return (
