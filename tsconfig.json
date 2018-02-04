@@ -16,6 +16,6 @@
     "outDir": "compiled",
     "typeRoots": ["node_modules/@types"]
   },
-  "files": ["server/index.ts", "app/client.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["./server/**/*.ts", "./app/**/*.ts", "./app/**/*.tsx", "./declarations/*"],
+  "exclude": ["node_modules", "./server/**/*.spec.ts"]
 }

@@ -1,0 +1,17 @@
+query getPosts($page: Int) {
+  posts(page: $page) {
+    pageInfo {
+      total
+    }
+    edges {
+      node {
+        id
+        slug
+        date
+        updatedAt
+        title
+        body
+      }
+    }
+  }
+}

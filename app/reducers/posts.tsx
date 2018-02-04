@@ -1,4 +1,5 @@
-import { IPost, IThunkResponse } from '../interfaces';
+import { getPostQuery } from '../graphql/types';
+import { IThunkResponse } from '../interfaces';
 import {
   GET_POST_FAILURE,
   GET_POST_REQUEST,
@@ -10,8 +11,8 @@ import {
 
 export interface IState {
   isLoading: boolean;
-  posts: IPost[];
-  post: IPost;
+  posts: Array<getPostQuery['post']>;
+  post: getPostQuery['post'];
   totalPosts: number;
 }
 
@@ -20,6 +21,7 @@ const initialState: IState = {
   post: {
     id: '',
     title: '',
+    updatedAt: '',
     slug: '',
     body: '',
     date: '',

@@ -1,4 +1,6 @@
 import request from 'axios';
+import * as postQuery from '../graphql/queries/get-post.graphql';
+import * as postsQuery from '../graphql/queries/get-posts.graphql';
 import * as types from '../types';
 
 interface IOptions {
@@ -11,38 +13,23 @@ interface IParams {
 
 export function fetchPosts(options: IOptions) {
   const pageNumber = options.pageNumber || 1;
-  const query = `{
-  posts(page: ${pageNumber}) {
-    pageInfo {
-      total
-    }
-    edges {
-      node {
-        id
-        slug
-        date
-        updatedAt
-        title
-        body
-      }
-    }
-  } }`;
   const url = '/graphql';
   return {
     type: types.GET_POSTS,
     promise: request.post(url, {
-      query,
+      query: postsQuery,
+      variables: { page: pageNumber },
     }),
   };
 }
 
 export function fetchPost(params: IParams) {
-  const query = `{ post(slug: "${params.postSlug}") { id, slug, date, updatedAt, title, body } }`;
   const url = '/graphql';
   return {
     type: types.GET_POST,
     promise: request.post(url, {
-      query,
+      query: postQuery,
+      variables: { slug: params.postSlug },
     }),
   };
 }

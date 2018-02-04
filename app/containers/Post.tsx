@@ -6,11 +6,11 @@ import { fetchPost, fetchPosts } from '../actions/posts';
 import PostMeta from '../components/PostMeta';
 import RelatedPosts from '../components/RelatedPosts';
 import * as styles from '../css/components/post.css';
-import { IPost } from '../interfaces';
+import { getPostQuery } from '../graphql/types';
 
 interface IPostProps extends React.Props<any> {
-  post: IPost;
-  posts: IPost[];
+  post: getPostQuery['post'];
+  posts: Array<getPostQuery['post']>;
   isLoading: boolean;
   params?: any;
   fetchPost: any;
@@ -45,6 +45,10 @@ class PostContainer extends React.Component<IPostProps, any> {
 
   public render() {
     const { post, posts } = this.props;
+    if (!post) {
+      return null;
+    }
+
     const body = post.body ? marked(post.body) : '';
     return (
       <div>
