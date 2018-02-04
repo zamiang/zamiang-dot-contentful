@@ -1,0 +1,43 @@
+# An object with a Globally Unique ID
+interface Node {
+  # The ID of the object.
+  id: ID!
+}
+
+type Status {
+  ping: Boolean
+}
+
+# post model
+type Post implements Node {
+  id: ID!
+  title: String!
+  updatedAt: String
+  slug: String
+  body: String!
+  date: String!
+}
+
+# Page info for paginated responses
+type PageInfo {
+  total: Int
+}
+
+type PostEdge {
+  node: Post
+}
+
+type PostConnection {
+  edges: [PostEdge!]!
+  pageInfo: PageInfo!
+}
+
+type RootQueryType {
+  status: Status
+  post(slug: String!): Post
+  posts(page: Int): PostConnection
+}
+
+schema {
+  query: RootQueryType
+}

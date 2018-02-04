@@ -1,5 +1,6 @@
 import request from 'axios';
 import { stringify } from 'querystring';
+import { IRootQueryType } from 'schema';
 import * as types from '../../app/types';
 
 const contentfulUrl =
@@ -30,16 +31,16 @@ interface IContentfulResponse {
   };
 }
 
-interface IPostsOptions {
-  page: number;
-}
+export const fetchStatus = () => {
+  return true;
+};
 
 const formatPost = (post: IContentfulPost) => {
   return {
     id: post.sys.id,
     slug: post.fields.slug,
     date: post.sys.createdAt,
-    modifiedDate: post.sys.updatedAt,
+    updatedAt: post.sys.updatedAt,
     title: post.fields.title,
     body: post.fields.body,
   };
@@ -75,17 +76,37 @@ const getEntryUrlBySlug = (slug: string, type: string) => {
   return `${entriesUrl}?${stringify(params)}`;
 };
 
-export const fetchPosts = async (options: IPostsOptions) => {
+export const fetchPosts = async (
+  root: any,
+  args: { page: number },
+  context: {},
+): Promise<IRootQueryType['posts']> => {
+  const { page } = args;
   const params = {
     order: '-fields.date',
-    skip: (options.page - 1) * types.PAGE_SIZE || 0,
+    skip: (page - 1) * types.PAGE_SIZE || 0,
     limit: types.PAGE_SIZE,
   };
 
   const url = `${getEntriesUrl('post')}&${stringify(params)}`;
-  return request.get(url).then(formatPostsContentfulResponse);
+  const response = await request.get(url);
+  const formattedResponse = formatPostsContentfulResponse(response);
+  return {
+    edges: formattedResponse.posts.map(p => ({
+      node: p,
+    })),
+    pageInfo: {
+      total: formattedResponse.total,
+    },
+  };
 };
 
-export const fetchPost = async (slug: string) => {
-  return request.get(getEntryUrlBySlug(slug, 'post')).then(formatPostContentfulResponse);
+export const fetchPost = async (
+  root: any,
+  args: { slug: string },
+  context: {},
+): Promise<IRootQueryType['post']> => {
+  const { slug } = args;
+  const response = await request.get(getEntryUrlBySlug(slug, 'post'));
+  return formatPostContentfulResponse(response);
 };

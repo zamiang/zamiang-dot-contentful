@@ -19,14 +19,6 @@ export interface IAction<T> {
   meta?: any;
 }
 
-export interface IPost {
-  id: string;
-  title: string;
-  slug: string;
-  body: string;
-  date: string;
-}
-
 export interface INavigationAction {
   visible: boolean;
 }

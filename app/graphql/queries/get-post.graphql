@@ -1,0 +1,10 @@
+query getPost($slug: String!) {
+  post(slug: $slug) {
+    id
+    slug
+    date
+    updatedAt
+    title
+    body
+  }
+}

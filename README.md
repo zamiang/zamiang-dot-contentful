@@ -1,6 +1,6 @@
 # Personal Homepage using React Redux Typescript GraphQL over [Contentful](https://www.contentful.com)
 
-## Features:
+## Features
 
 * **universal** [**Redux**](https://github.com/reactjs/redux)
   * Server-side rendering with [**React Router**](https://github.com/reactjs/react-router) 2.x.

@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchPosts } from '../actions/posts';
 import * as styles from '../css/components/home.css';
-import { IPost } from '../interfaces';
+import { getPostQuery } from '../graphql/types';
 import { ROOT_URL } from '../types';
 
 interface IHomeProps {
-  posts: IPost[];
+  posts: Array<getPostQuery['post']>;
   totalPosts: number;
   currentPage: number;
   fetchPosts: any;
@@ -41,7 +41,10 @@ class Home extends React.Component<IHomeProps, any> {
   public render() {
     const { posts } = this.props;
     const fullTitle = "Brennan Moore | I'm a product engineer based in NYC.";
-    const postsHtml = posts.map((post: IPost) => {
+    const postsHtml = (posts || []).map(post => {
+      if (!post) {
+        return null;
+      }
       return (
         <li key={post.id} className={styles.post}>
           <Link to={`/post/${post.slug}`}>{post.title}</Link>

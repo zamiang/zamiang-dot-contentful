@@ -1,7 +1,8 @@
 import * as bodyParser from 'body-parser';
+import * as express from 'express';
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express';
 import * as path from 'path';
-import schema from './data/schema';
+import schema from './graphql/make-executable-schema';
 
 export default (app: any) => {
   app.set('port', process.env.PORT || 3000);
@@ -15,7 +16,15 @@ export default (app: any) => {
   app.set('view cache', false);
 
   app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-  app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+  app.use(
+    '/graphql',
+    bodyParser.json(),
+    graphqlExpress(async (request: express.Request | undefined) => ({
+      schema,
+      context: {}, // normally would parse auth token and do some logging here via `await getGraphQLContext(request!)`,
+      debug: false,
+    })),
+  );
 
   // I am adding this here so that the Heroku deploy will work
   // Indicates the app is behind a front-facing proxy

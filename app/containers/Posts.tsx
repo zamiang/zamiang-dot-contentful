@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import { fetchPosts } from '../actions/posts';
 import PageNavigation from '../components/PageNavigation';
 import * as styles from '../css/components/posts.css';
-import { IPost } from '../interfaces';
+import { getPostQuery } from '../graphql/types';
 import { ROOT_URL } from '../types';
 
 interface IProps {
@@ -22,7 +22,7 @@ interface IProps {
 }
 
 interface IStateProps {
-  posts: IPost[];
+  posts: Array<getPostQuery['post']>;
   totalPosts: number;
 }
 
@@ -59,7 +59,10 @@ class Posts extends React.Component<allProps, {}> {
     const { posts, totalPosts, match } = this.props;
     const fullTitle = 'Brennan Moore | Posts';
     const pageNumber = match && match.params.pageNumber ? parseInt(match.params.pageNumber, 10) : 1;
-    const postsHtml = posts.map((post: IPost) => {
+    const postsHtml = posts.map(post => {
+      if (!post) {
+        return null;
+      }
       return (
         <div key={post.id} className={styles.post}>
           <div className={styles.time}>{moment(post.date).format('Do MMMM YYYY')}</div>
