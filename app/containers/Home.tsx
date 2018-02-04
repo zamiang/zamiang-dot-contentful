@@ -10,10 +10,6 @@ import { ROOT_URL } from '../types';
 
 const cx = classNames.bind(styles);
 
-interface IParams {
-  pageNumber: number;
-}
-
 interface IHomeProps {
   posts: IPost[];
   totalPosts: number;

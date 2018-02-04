@@ -3,7 +3,6 @@ import * as marked from 'marked';
 import * as moment from 'moment';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { fetchPost, fetchPosts } from '../actions/posts';
 import PostMeta from '../components/PostMeta';
 import RelatedPosts from '../components/RelatedPosts';
