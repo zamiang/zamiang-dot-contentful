@@ -12,10 +12,8 @@
     "clean": "rimraf public && rimraf compiled",
     "start": "cross-env NODE_ENV=production node compiled/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build:dev":
-      "cross-env NODE_ENV=development webpack --colors --display-error-details --config ./webpack/webpack.config.js",
-    "build":
-      "yarn run clean && cross-env NODE_ENV=production webpack --colors --display-error-details --config ./webpack/webpack.config.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --colors --display-error-details --config ./webpack/webpack.config.js",
+    "build": "yarn run clean && cross-env NODE_ENV=production webpack --colors --display-error-details --config ./webpack/webpack.config.js",
     "stats": "yarn run clean && cross-env NODE_ENV=production webpack --json > stats.json",
     "postinstall": "if [ $BUILD_ASSETS ]; then yarn run build; else yarn run build:dev; fi",
     "test": "jest",
@@ -43,7 +41,13 @@
       "!app/graphql/**"
     ],
     "mapCoverage": true,
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
     "globals": {
       "ts-jest": {
         "skipBabel": true
@@ -132,6 +136,7 @@
     "url-loader": "^0.6.2",
     "warning": "^3.0.0",
     "webpack": "^3.10.0",
-    "webpack-dev-middleware": "^2.0.4"
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-s3-plugin": "^1.0.0-rc.0"
   }
 }

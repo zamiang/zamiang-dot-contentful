@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const AssetHashPlugin = require('./assetHash.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const S3Plugin = require('webpack-s3-plugin');
 
 module.exports = ({ production = false, browser = false } = {}) => {
   let plugins = [
@@ -35,10 +36,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
           mangle: true,
         },
       }),
-    );
-  }
-
-  /*new S3Plugin({
+      new S3Plugin({
         exclude: /.*\.html$/,
         s3Options: {
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -51,6 +49,7 @@ module.exports = ({ production = false, browser = false } = {}) => {
           CacheControl: 'max-age=86400',
         },
       }),
-      */
+    );
+  }
   return plugins;
 };
