@@ -13,7 +13,7 @@ type Post implements Node {
   id: ID!
   title: String!
   updatedAt: String
-  slug: String
+  slug: String!
   body: String!
   date: String!
 }

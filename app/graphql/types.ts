@@ -8,7 +8,7 @@ export interface getPostQueryVariables {
 export interface getPostQuery {
   post:  {
     id: string,
-    slug: string | null,
+    slug: string,
     date: string,
     updatedAt: string | null,
     title: string,
@@ -28,7 +28,7 @@ export interface getPostsQuery {
     edges:  Array< {
       node:  {
         id: string,
-        slug: string | null,
+        slug: string,
         date: string,
         updatedAt: string | null,
         title: string,

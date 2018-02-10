@@ -38,7 +38,11 @@ class PostContainer extends React.Component<IPostProps, any> {
 
     // new post navigated to
     // TODO check this
-    if (nextProps.params.postSlug && nextProps.params.postSlug !== params.postSlug) {
+    if (
+      nextProps.params &&
+      nextProps.params.postSlug &&
+      nextProps.params.postSlug !== params.postSlug
+    ) {
       this.props.fetchPost(nextProps.params);
     }
   }
