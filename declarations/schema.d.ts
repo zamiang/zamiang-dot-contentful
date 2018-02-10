@@ -34,7 +34,7 @@ declare module 'schema' {
     id: string;
     title: string;
     updatedAt: string | null;
-    slug: string | null;
+    slug: string;
     body: string;
     date: string;
   }
