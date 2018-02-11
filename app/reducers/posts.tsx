@@ -44,8 +44,8 @@ export default function post(state = initialState, action: IThunkResponse) {
     case GET_POSTS_SUCCESS:
       return Object.assign({}, state, {
         postsFetching: false,
-        posts: formatPosts(action.res.data.data.posts.edges),
-        totalPosts: action.res.data.data.posts.pageInfo.total,
+        posts: formatPosts(action.res.data.data.posts!.edges),
+        totalPosts: action.res.data.data.posts!.pageInfo.total,
       });
     case GET_POSTS_FAILURE:
       return Object.assign({}, state, {

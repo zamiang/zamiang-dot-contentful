@@ -76,12 +76,7 @@ const getEntryUrlBySlug = (slug: string, type: string) => {
   return `${entriesUrl}?${stringify(params)}`;
 };
 
-export const fetchPosts = async (
-  root: any,
-  args: { page: number },
-  context: {},
-): Promise<IRootQueryType['posts']> => {
-  const { page } = args;
+const getPosts = async (page: number) => {
   const params = {
     order: '-fields.date',
     skip: (page - 1) * types.PAGE_SIZE || 0,
@@ -90,7 +85,16 @@ export const fetchPosts = async (
 
   const url = `${getEntriesUrl('post')}&${stringify(params)}`;
   const response = await request.get(url);
-  const formattedResponse = formatPostsContentfulResponse(response);
+  return formatPostsContentfulResponse(response);
+};
+
+export const fetchPosts = async (
+  root: any,
+  args: { page: number },
+  context: {},
+): Promise<IRootQueryType['posts']> => {
+  const { page } = args;
+  const formattedResponse = await getPosts(page);
   return {
     edges: formattedResponse.posts.map(p => ({
       node: p,

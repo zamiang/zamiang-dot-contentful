@@ -1,3 +1,5 @@
+import { getPostsQuery } from './graphql/types';
+
 export interface IThunkAction {
   type: string;
   promise?: any;
@@ -7,7 +9,7 @@ export interface IThunkAction {
 
 export interface IThunkResponse {
   type: string;
-  res: any;
+  res: { data: { data: getPostsQuery } };
   error?: string;
   data?: any;
 }

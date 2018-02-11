@@ -53,6 +53,7 @@ declare module 'schema' {
   interface IPostConnection {
     edges: Array<IPostEdge>;
     pageInfo: IPageInfo;
+    isTypeScriptAwesome: boolean | null;
   }
 
 
